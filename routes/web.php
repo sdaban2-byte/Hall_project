@@ -4,7 +4,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
+
 
 
 Route::get('/', function () {
@@ -24,5 +26,8 @@ Route::post('admins_update/{id}',[AdminController::class, 'update'])->name('admi
 
 Route::resource('clients', ClientController::class);
 Route::post('clients_update/{id}',[ClientController::class, 'update'])->name('clients_update');
+
+Route::resource('reviews', ReviewController::class);
+Route::post('reviews_update/{id}',[ReviewController::class, 'update'])->name('reviews_update');
 
 });

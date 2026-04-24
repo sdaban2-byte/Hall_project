@@ -11,4 +11,8 @@ class Client extends Model
         return $this->morphOne(User::class ,'actor','actor_type','actor_id','id');
 
     }
+    public function reviews()
+{
+    return $this->hasMany(Review::class);
+}
 }
