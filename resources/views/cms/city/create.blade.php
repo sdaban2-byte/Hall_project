@@ -18,7 +18,7 @@
                   <!--end::Header-->
                   <!--begin::Form-->
                <form class="needs-validation" novalidate>
-                
+
   <div class="card-body">
     <div class="form-group mb-3">
     <label for="country_id" class="form-label">Country Name</label>
@@ -30,7 +30,7 @@
     </select>
 </div>
     <div class="row g-3">
-      
+
       <div class="col-md-12"> <label for="city_name" class="form-label">City Name</label>
         <input
           type="text"
@@ -42,7 +42,7 @@
         />
         <div class="valid-feedback">Looks good!</div>
       </div>
-      
+
       <div class="col-md-12"> <label for="street" class="form-label">Street</label>
         <input
           type="text"
@@ -55,13 +55,13 @@
         <div class="valid-feedback">Looks good!</div>
       </div>
 
-    
+
 
        </div>
         </div>
       <div class="card-footer">
        <button class="btn btn-primary" type="button" onclick="performStore()">Store</button>
-       <a href="{{ route('countries.index') }}" class="btn btn-primary" type="submit">Index</a>
+      <a href="{{ route('cities.index') }}" class="btn btn-primary" type="submit">Index</a>
           </div>
             </form>
                   <!--end::Form-->

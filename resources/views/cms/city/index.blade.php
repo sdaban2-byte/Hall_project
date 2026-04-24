@@ -26,21 +26,21 @@
                   <div class="card-body">
                     <table class="table table-bordered">
                       <thead>
-                        
+
                         <tr>
                           <th style="width: 10px" class="text-center">id</th>
                           <th class="text-center">city_name</th>
                           <th class="text-center">street</th>
                          <th class="text-center">Country Name</th>
                           <th class="text-center">Action</th>
-                          
+
                         </tr>
-                        
+
                       </thead>
                      <tbody>
                         @foreach ( $cities as $city)
-                            
-                        
+
+
                         <tr class="align-middle">
                             <td>{{ $city->id }}</td>
                             <td>{{ $city->city_name}}</td>
@@ -48,18 +48,18 @@
                             <td>{{ $city->country->country_name}}</td>
                             <td class="text-center">
             <div class="btn-group">
-                
-                <a href="{{ route('cities.show', $city->id) }}" 
+
+                <a href="{{ route('cities.show', $city->id) }}"
                    class="btn btn-sm btn-outline-success" title="Show">
                     <i class="bi bi-eye-fill"></i>
                 </a>
 
-                <a href="{{ route('cities.edit', $city->id) }}" 
+                <a href="{{ route('cities.edit', $city->id) }}"
                    class="btn btn-sm btn-outline-primary" title="Edit">
                     <i class="bi bi-pencil-square"></i>
                 </a>
 
-                <form action="{{ route('cities.destroy', $city->id) }}" method="POST" style="display:inline;" 
+                <form action="{{ route('cities.destroy', $city->id) }}" method="POST" style="display:inline;"
                       onsubmit="return confirm('Are you sure you want to delete ({{ $city->city_name }})?');">
                     @csrf
                     @method('DELETE')
