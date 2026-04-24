@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CountryController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,5 +21,8 @@ Route::post('cities_update/{id}',[CityController::class, 'update'])->name('citie
 
 Route::resource('admins', AdminController::class);
 Route::post('admins_update/{id}',[AdminController::class, 'update'])->name('admins_update');
+
+Route::resource('clients', ClientController::class);
+Route::post('clients_update/{id}',[ClientController::class, 'update'])->name('clients_update');
 
 });
