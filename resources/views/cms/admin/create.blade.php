@@ -99,7 +99,7 @@
                     <!-- Image -->
                     <div class="mb-3">
                         <label for="image" class="form-label"ءء>Choose Image</label>
-                        <input type="file" class="form-control" id="image" name="image">
+                        <input type="file" class="form-control" id="image" name="image" accept="image/" >
                     </div>
 
                 </div>
@@ -127,7 +127,7 @@
             formData.append('mobile', document.getElementById('mobile').value);
             formData.append('gender', document.getElementById('gender').value);
             formData.append('status', document.getElementById('status').value);
-            // formData.append('image', document.getElementById('image').files[0]);
+            formData.append('image', document.getElementById('image').files[0]);
 
 
             store('/cms/admin/admins', formData);

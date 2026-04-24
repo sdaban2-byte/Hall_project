@@ -30,13 +30,13 @@
                                     <tr>
                                         <th style="width: 10px" class="text-center">id</th>
                                         <th class="text-center">Image</th>
-
                                         <th class="text-center">First name </th>
                                         <th class="text-center">Last name</th>
                                         <th class="text-center">email</th>
                                         <th class="text-center">gender</th>
                                         <th class="text-center">status</th>
                                         <th class="text-center">city name </th>
+                                        <th class="text-center">sitting</th>
 
                                     </tr>
 
@@ -45,15 +45,30 @@
                                     @foreach ($admins as $admin)
                                         <tr class="align-middle">
                                             <td>{{ $admin->id }}</td>
-                                            {{-- <td>{{ $admin->user->image }}</td> --}}
 
-                                            <td>{{ $admin->user->first_name ?? ""}}</td>
-                                            <td>{{$admin->email}}</td>
-                                            <td>{{$admin->user->gender??""}}</td>
-                                            <td>{{$admin->user->status??""}}</td>
+                                            <td>
+                                                <img src="{{ asset('storage/images/admin/' . $admin->user->image ?? '') }}"
+                                                    class="rounded-circle" alt="user Image" width="50" height="50">
+
+                                            </td>
+
+                                            <td>{{ $admin->user->first_name ?? '' }}</td>
+                                            <td>{{ $admin->user->last_name ?? '' }}</td>
+
+                                            <td>{{ $admin->email }}</td>
+                                            <td>
+                                                @if ($admin->user->gender == 'male')
+                                                    <span class="badge bg-primary">{{ $admin->user->gender ?? '' }}</span>
+                                                @else
+                                                    <span class="badge" style="background-color:#e83e8c;">{{ $admin->user->gender ?? '' }}</span>
+                                                @endif
+                                            </td>
+
+                                            <td>{{ $admin->user->status ?? '' }}</td>
 
 
-                                            <td>{{ $admin->user->city->city_name??"" }}</td>
+                                            <td><span class="badge bg-info">{{ $admin->user->city->city_name ?? '' }}</span>
+                                            </td>
                                             <td class="text-center">
                                                 <div class="btn-group">
 
@@ -69,7 +84,8 @@
 
                                                     <form action="{{ route('admins.destroy', $admin->id) }}" method="POST"
                                                         style="display:inline;"
-                                                        onsubmit="return confirm('Are you sure you want to delete ({{ optional($admin->user)->first_name ?? 'this user' }})?');"   >   {{-- رجّع null بدل error --}}
+                                                        onsubmit="return confirm('Are you sure you want to delete ({{ optional($admin->user)->first_name ?? 'this user' }})?');">
+                                                        {{-- رجّع null بدل error --}}
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="button"

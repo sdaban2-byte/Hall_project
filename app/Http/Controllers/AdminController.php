@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -34,58 +35,63 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         //
-         $validator = Validator($request->all(),[
-        'first_name' => 'required',
-                'last_name' => 'required',
+        $validator = Validator($request->all(), [
+            'first_name' => 'required',
+            'last_name' => 'required',
 
-        'password' => 'required',
-         'email' => 'nullable'
+            'password' => 'required',
+            'email' => 'nullable'
 
-    ] , [
-        'first_name.required' => 'This is required',
-        'last_name.required' => 'This is required',
-                'password.required' => 'This is required',
-        'email.required' => 'This is required',
+        ], [
+            'first_name.required' => 'This is required',
+            'last_name.required' => 'This is required',
+            'password.required' => 'This is required',
+            'email.required' => 'This is required',
 
-    ]);
+        ]);
 
-    if( $validator->fails()){
+        if ($validator->fails()) {
 
-        return response()->json([
-            'icon' => 'error' ,
-            'title' => $validator->getMessageBag()->first(),
-        ] , 400);
-    }
+            return response()->json([
+                'icon' => 'error',
+                'title' => $validator->getMessageBag()->first(),
+            ], 400);
+        } else {
 
-    else{
+            $admins = new Admin();
+            $admins->email = $request->get('email');
+            $admins->password = $request->get('password');
 
-        $admins = new Admin();
-        $admins->email = $request->get('email');
-        $admins->password = $request->get('password');
+            $isSaved = $admins->save();
+            if ($isSaved) {
+                $users = new User();
 
-        $isSaved = $admins->save();
-        if(  $isSaved ){
-        $users=new User();
-        $users->first_name =$request->input('first_name'); # لانه بكتب get is deprecated
-        $users->last_name =$request->input('last_name');
-        $users->mobile =$request->input('mobile');
-        $users->address =$request->input('address');
-        $users->gender =$request->input('gender');
-        $users->date =$request->input('date');
-        $users->status =$request->input('status');
-        $users->city_id =$request->input('city_id');
-        $users->actor()->associate($admins);
-        $isSaved = $users->save();
+                if (request()->hasFile('image')) {
+
+                    $image = $request->file('image');
+                    $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+                    $image->move('storage/images/admin', $imageName);
+                    $users->image = $imageName;
+                }
+
+                $users->first_name = $request->input('first_name'); # لانه بكتب get is deprecated
+                $users->last_name = $request->input('last_name');
+                $users->mobile = $request->input('mobile');
+                $users->address = $request->input('address');
+                $users->gender = $request->input('gender');
+                $users->date = $request->input('date');
+                $users->status = $request->input('status');
+                $users->city_id = $request->input('city_id');
+                $users->actor()->associate($admins);
+                $isSaved = $users->save();
 
 
-       return response()->json([
-            'icon' => 'success' ,
-            'title' => 'Crearted is Successfully',
-        ] , 200);
-
-
-    }
-    }
+                return response()->json([
+                    'icon' => 'success',
+                    'title' => 'Crearted is Successfully',
+                ], 200);
+            }
+        }
     }
 
     /**
@@ -93,7 +99,9 @@ class AdminController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $cities = City::all();
+        $admins = Admin::findOrFail($id);
+        return response()->view('cms.admin.show', compact('admins', 'cities'));
     }
 
     /**
@@ -102,6 +110,10 @@ class AdminController extends Controller
     public function edit(string $id)
     {
         //
+        $admins = Admin::findOrFail($id);
+        $cities = City::all();
+
+        return response()->view('cms.admin.edit', compact('admins', 'cities'));
     }
 
     /**
@@ -110,6 +122,64 @@ class AdminController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $validator = Validator($request->all(), [
+            'first_name' => 'required',
+            'last_name' => 'required',
+
+            'password' => 'required',
+            'email' => 'nullable'
+
+        ], [
+            'first_name.required' => 'This is required',
+            'last_name.required' => 'This is required',
+            'password.required' => 'This is required',
+            'email.required' => 'This is required',
+
+        ]);
+
+        if ($validator->fails()) {
+
+            return response()->json([
+                'icon' => 'error',
+                'title' => $validator->getMessageBag()->first(),
+            ], 400);
+        } else {
+
+            $admins = Admin::findOrFail($id);
+            $admins->email = $request->get('email');
+            $admins->password = $request->get('password');
+            // if ($request->password) {
+            //     $admins->password = Hash::make($request->password);
+            // }
+            $isUpdate = $admins->save();
+            if ($isUpdate) {
+                $users =  $admins->user;
+                if (request()->hasFile('image')) {
+
+                    $image = $request->file('image');
+                    $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+                    $image->move('storage/images/admin', $imageName);
+                    $users->image = $imageName;
+                }
+
+                $users->first_name = $request->input('first_name'); # لانه بكتب get is deprecated
+                $users->last_name = $request->input('last_name');
+                $users->mobile = $request->input('mobile');
+                $users->address = $request->input('address');
+                $users->gender = $request->input('gender');
+                $users->date = $request->input('date');
+                $users->status = $request->input('status');
+                $users->city_id = $request->input('city_id');
+                $users->actor()->associate($admins);
+                $isUpdate = $users->save();
+
+                return response()->json([
+                    'icon' => 'success',
+                    'title' => 'Updated successfully',
+                    'redirect' => route('admins.index')
+                ]);
+            }
+        }
     }
 
     /**
@@ -118,5 +188,6 @@ class AdminController extends Controller
     public function destroy(string $id)
     {
         //
+        $admins = Admin::destroy($id);
     }
 }
