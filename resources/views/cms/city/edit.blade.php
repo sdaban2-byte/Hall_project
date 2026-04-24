@@ -20,7 +20,19 @@
                   <!--begin::Form-->
                  <form class="needs-validation" novalidate>
   <div class="card-body">
+     <div class="form-group mb-3">
+    <label for="country_id" class="form-label">Country Name</label>
+    <select class="form-select custom-scroll-select" id="country_id" name="country_id">
+        <option value="" selected disabled>Select a country</option>
+        @foreach($countries as $country)
+            <option value="{{ $country->id }}">{{ $country->country_name }}</option>
+        @endforeach
+    </select>
+</div>
+
+    
     <div class="row g-3">
+
 
       <div class="col-md-12"> <label for="city_name" class="form-label">City Name</label>
         <input
