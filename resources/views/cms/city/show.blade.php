@@ -1,10 +1,10 @@
 @extends('cms.parent')
 
-@section('title','show_country')
+@section('title','show_city')
 
-@section('maintitle','show_contry')
+@section('maintitle','show_city')
 
-@section('subtitle','show_country')
+@section('subtitle','show_city')
 
 @section('styles')
 
@@ -14,7 +14,7 @@
   <div class="card card-info card-outline mb-4">
                   <!--begin::Header-->
                   <div class="card-header">
-                    <div class="card-title">show Data of country</div>
+                    <div class="card-title">show Data of city</div>
                   </div>
                   <!--end::Header-->
                   <!--begin::Form-->
@@ -22,25 +22,25 @@
   <div class="card-body">
     <div class="row g-3">
       
-      <div class="col-md-12"> <label for="country_name" class="form-label">Country Name</label>
+      <div class="col-md-12"> <label for="city_name" class="form-label">City Name</label>
         <input
           type="text"
           class="form-control"
-          id="country_name" disabled
-          name="country_name"
-          value="{{ $countries->country_name }}"
+          id="city_name" disabled
+          name="city_name"
+          value="{{ $cities->city_name }}"
           required
         />
         <div class="valid-feedback">Looks good!</div>
       </div>
       
-      <div class="col-md-12"> <label for="code" class="form-label">Country Code</label>
+      <div class="col-md-12"> <label for="code" class="form-label">street</label>
         <input
           type="text"
           class="form-control"
-          id="code" disabled
-          name="code"
-          value="{{ $countries->code }}"
+          id="street" disabled
+          name="street"
+          value="{{ $cities->street }}"
           required
         />
         <div class="valid-feedback">Looks good!</div>
@@ -50,7 +50,7 @@
         </div>
       <div class="card-footer">
   
-       <a href="{{ route('countries.index') }}" class="btn btn-primary" type="submit">Index</a>
+       <a href="{{ route('cities.index') }}" class="btn btn-primary" type="submit">Index</a>
           </div>
             </form>
                   <!--end::Form-->

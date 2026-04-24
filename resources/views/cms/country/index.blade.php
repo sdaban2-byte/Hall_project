@@ -44,6 +44,7 @@
                             <td>{{ $country->id }}</td>
                             <td>{{ $country->country_name}}</td>
                             <td>{{ $country->code}}</td>
+                            
                             <td class="text-center">
             <div class="btn-group">
                 
