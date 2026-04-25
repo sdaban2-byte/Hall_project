@@ -377,7 +377,130 @@
 
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-person-circle"></i>
 
+                                <p>
+                                    Hall Owner
+                                    <i class="nav-arrow bi bi-chevron-right"></i>
+                                </p>
+                            </a>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('hall_owners.index') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-list-ul"></i>
+                                        <p>index</p>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="{{ route('hall_owners.create') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                        <p>
+                                            create
+                                        </p>
+                                    </a>
+
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+
+                        <li class="nav-header">Hall Management</li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-globe-americas"></i>
+                                <p>
+                                    Hall detailes
+                                    <i class="nav-arrow bi bi-chevron-right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('halls.index') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-list-ul"></i>
+                                        <p>index Hall</p>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="{{ route('halls.create') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                        <p>
+                                            create Hall
+                                        </p>
+                                    </a>
+
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        {{-- <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-buildings"></i>
+                                <p>
+                                    City
+                                    <i class="nav-arrow bi bi-chevron-right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('cities.index') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-list-ul"></i>
+                                        <p>index city</p>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="{{ route('cities.create') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                        <p>
+                                            create city
+                                        </p>
+                                    </a>
+
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-buildings"></i>
+                                <p>
+                                    Review
+                                    <i class="nav-arrow bi bi-chevron-right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('reviews.index') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-list-ul"></i>
+                                        <p>index Review</p>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="{{ route('reviews.create') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                        <p>
+                                            create Review
+                                        </p>
+                                    </a>
+
+                                </li>
+
+                            </ul>
+                        </li> --}}
 
                         <li class="nav-header">Content Management</li>
 
@@ -433,35 +556,6 @@
                                         <i class="nav-icon bi bi-plus-circle-fill"></i>
                                         <p>
                                             create city
-                                        </p>
-                                    </a>
-
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-buildings"></i>
-                                <p>
-                                    Review
-                                    <i class="nav-arrow bi bi-chevron-right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('reviews.index') }}" class="nav-link">
-                                        <i class="nav-icon bi bi-list-ul"></i>
-                                        <p>index Review</p>
-                                    </a>
-                                </li>
-
-
-                                <li class="nav-item">
-                                    <a href="{{ route('reviews.create') }}" class="nav-link">
-                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
-                                        <p>
-                                            create Review
                                         </p>
                                     </a>
 

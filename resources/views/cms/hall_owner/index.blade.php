@@ -1,10 +1,10 @@
 @extends('cms.parent')
 
-@section('title', 'Admin Index')
+@section('title', 'Hall Owner Index')
 
-@section('maintitle', 'Admin Index')
+@section('maintitle', 'Hall Owner Index')
 
-@section('subtitle', 'Admin Index')
+@section('subtitle', 'Hall Owner Index')
 
 @section('styles')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -19,7 +19,8 @@
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <a href="{{ route('admins.create') }}" class="btn btn-primary" type="submit">Create new Admin</a>
+                            <a href="{{ route('hall_owners.create') }}" class="btn btn-primary" type="submit">Create new
+                                Hall Owner </a>
 
                         </div>
                         <!-- /.card-header -->
@@ -32,9 +33,9 @@
                                         <th class="text-center">Image</th>
                                         <th class="text-center">First name </th>
                                         <th class="text-center">Last name</th>
-                                        <th class="text-center">email</th>
-                                        <th class="text-center">gender</th>
-                                        <th class="text-center">status</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Company Name</th>
+                                        <th class="text-center">is_verified</th>
                                         <th class="text-center">city name </th>
                                         <th class="text-center">sitting</th>
 
@@ -42,55 +43,54 @@
 
                                 </thead>
                                 <tbody>
-                                    @foreach ($admins as $admin)
+                                    @foreach ($hall_owners as $hall_owner)
                                         <tr class="align-middle">
-                                            <td>{{ $admin->id }}</td>
+                                            <td>{{ $hall_owner->id }}</td>
 
                                             <td>
-                                                <img src="{{ asset('storage/images/admin/' . optional($admin->user)->image) }}"
+                                                <img src="{{ asset('storage/images/hall_owner/' . optional($hall_owner->user)->image) }}"
                                                     class="rounded-circle" alt="user Image" width="50" height="50">
 
                                             </td>
 
-                                            <td>{{ $admin->user->first_name ?? '' }}</td>
-                                            <td>{{ $admin->user->last_name ?? '' }}</td>
+                                            <td>{{ $hall_owner->user->first_name ?? '' }}</td>
+                                            <td>{{ $hall_owner->user->last_name ?? '' }}</td>
+                                            <td>{{ $hall_owner->email ?? '' }}</td>
 
-                                            <td>{{ $admin->email }}</td>
+                                            <td>{{ $hall_owner->company_name }}</td>
+                                            {{-- edit to is_veridied --}}
                                             <td>
-                                                @if (($admin->user->gender ?? null) == 'male')
-                                                    <span class="badge bg-primary">{{ $admin->user->gender ?? '' }}</span>
-                                                @else
-                                                    <span class="badge"
-                                                        style="background-color:#e83e8c;">{{ $admin->user->gender ?? '' }}</span>
-                                                @endif
+                                                <span
+                                                    class="badge {{ $hall_owner->is_verified ? 'bg-success' : 'bg-danger' }}">
+                                                    {{ $hall_owner->is_verified ? 'Verified' : 'Not Verified' }}
+                                                </span>
                                             </td>
 
-                                            <td>{{ $admin->user->status ?? '' }}</td>
 
-
-                                            <td><span class="badge bg-info">{{ $admin->user->city->city_name ?? '' }}</span>
+                                            <td><span
+                                                    class="badge bg-info">{{ $hall_owner->user->city->city_name ?? '' }}</span>
                                             </td>
                                             <td class="text-center">
                                                 <div class="btn-group">
 
-                                                    <a href="{{ route('admins.show', $admin->id) }}"
+                                                    <a href="{{ route('hall_owners.show', $hall_owner->id) }}"
                                                         class="btn btn-sm btn-outline-success" title="Show">
                                                         <i class="bi bi-eye-fill"></i>
                                                     </a>
 
-                                                    <a href="{{ route('admins.edit', $admin->id) }}"
+                                                    <a href="{{ route('hall_owners.edit', $hall_owner->id) }}"
                                                         class="btn btn-sm btn-outline-primary" title="Edit">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </a>
 
-                                                    <form action="{{ route('admins.destroy', $admin->id) }}" method="POST"
-                                                        style="display:inline;"
-                                                        onsubmit="return confirm('Are you sure you want to delete ({{ optional($admin->user)->first_name ?? 'this user' }})?');">
+                                                    <form action="{{ route('hall_owners.destroy', $hall_owner->id) }}"
+                                                        method="POST" style="display:inline;"
+                                                        onsubmit="return confirm('Are you sure you want to delete ({{ optional($hall_owner->user)->first_name ?? 'this user' }})?');">
                                                         {{-- رجّع null بدل error --}}
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="button"
-                                                            onclick="confirmDestroy({{ $admin->id }}, this)"
+                                                            onclick="confirmDestroy({{ $hall_owner->id }}, this)"
                                                             class="btn btn-sm btn-outline-danger" title="Delete">
                                                             <i class="bi bi-trash3-fill"></i>
                                                         </button>
@@ -124,7 +124,7 @@
                       </li>
                     </ul>
                   </div>  --}}
-                        {{ $admins->links() }}
+                        {{ $hall_owners->links() }}
                     </div>
                     <!-- /.card -->
 
@@ -133,7 +133,7 @@
                 @section('scripts')
                     <script>
                         function confirmDestroy(id, reference) {
-                            destroy('/cms/admin/admins/' + id, reference);
+                            destroy('/cms/admin/hall_owners/' + id, reference);
                         }
                     </script>
 
