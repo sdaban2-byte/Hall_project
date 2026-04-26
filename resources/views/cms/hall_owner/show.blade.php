@@ -4,7 +4,7 @@
 
 @section('maintitle', 'Show Hall Owner')
 
-@section('subtitle', 'Show  Hall Owner')
+@section('subtitle', 'Show Hall Owner')
 
 @section('styles')
 
@@ -14,7 +14,7 @@
     <div class="card card-info card-outline mb-4">
         <!--begin::Header-->
         <div class="card-header">
-            <div class="card-title">Show data of  Hall Owner</div>
+            <div class="card-title">Show data of Hall Owner</div>
         </div>
         <!--end::Header-->
         <!--begin::Form-->
@@ -88,7 +88,7 @@
                             value="{{ $hall_owners->user->address ?? '' }}" required>
                     </div>
 
-                      <!-- company_name -->
+                    <!-- company_name -->
                     <div class="mb-3">
                         <label for="company_name" class="form-label">Company Name</label>
                         <input type="text" class="form-control" id="company_name" disabled name="company_name"
@@ -189,7 +189,7 @@
             formData.append('company_name', document.getElementById('company_name').value);
             formData.append('image', document.getElementById('image').files[0]);
 
-            storeRoute('/cms/admin/hall_owners_update/'+ id, formData);
+            storeRoute('/cms/admin/hall_owners_update/' + id, formData);
         }
     </script>
 

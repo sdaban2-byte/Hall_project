@@ -15,17 +15,11 @@
 
         <div class="card">
 
-
-
-            <div class="card-header">
-
+            {{-- <div class="card-header">
                 <a href="{{ route('createHall', $id) }}" class="btn btn-primary">
                     Create Hall
                 </a>
-                <a href="{{ route('hall_owners.index', $id) }}" class="btn btn-primary">
-                    Return to all hall owner
-                </a>
-            </div>
+            </div> --}}
 
             <div class="card-body">
 
@@ -38,7 +32,7 @@
                             <th>Image</th>
                             <th>Capacity</th>
                             <th>Price</th>
-                            <th>Actions</th>
+                            {{-- <th>Actions</th> --}}
                         </tr>
                     </thead>
 
@@ -62,7 +56,7 @@
                                 <td>{{ $hall->capacity }}</td>
                                 <td>{{ $hall->price }}</td>
 
-                                <td>
+                                {{-- <td>
 
                                     <a href="{{ route('halls.show', $hall->id) }}" class="btn btn-success btn-sm">
                                         Show
@@ -77,7 +71,7 @@
                                         Delete
                                     </button>
 
-                                </td>
+                                </td> --}}
 
                             </tr>
                         @endforeach

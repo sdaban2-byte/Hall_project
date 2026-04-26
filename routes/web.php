@@ -17,7 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::prefix('cms/admin')->group(function () {
+
+    Route::get('/', function () {
+        return view('cms.home');
+    });
     Route::view('', 'cms.parent');
     Route::resource('countries', CountryController::class);
     Route::post('countries_update/{id}', [CountryController::class, 'update'])->name('countries_update');
@@ -43,5 +49,6 @@ Route::prefix('cms/admin')->group(function () {
     Route::post('halls_update/{id}', [HallController::class, 'update'])->name('halls_update');
 
 
-
-    });
+    Route::get('/create/halls/{id}', [HallController::class, 'createHall'])->name('createHall');
+    Route::get('/index/halls/{id}', [HallController::class, 'indexHall'])->name('indexHall');
+});

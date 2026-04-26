@@ -425,12 +425,12 @@
                                 <li class="nav-item">
                                     <a href="{{ route('halls.index') }}" class="nav-link">
                                         <i class="nav-icon bi bi-list-ul"></i>
-                                        <p>index Hall</p>
+                                        <p>index All Hall</p>
                                     </a>
                                 </li>
 
 
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="{{ route('halls.create') }}" class="nav-link">
                                         <i class="nav-icon bi bi-plus-circle-fill"></i>
                                         <p>
@@ -438,7 +438,7 @@
                                         </p>
                                     </a>
 
-                                </li>
+                                </li> --}}
 
                             </ul>
                         </li>
