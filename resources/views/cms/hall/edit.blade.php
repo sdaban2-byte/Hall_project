@@ -22,9 +22,13 @@
 
                         <form id="hallForm">
 
-                            @csrf
 
-                            <!-- Owner -->
+                            <div class="mb-3">
+                                <input type="text" name="hall_owner_id" id="hall_owner_id" value="{{ $ownerId }}"
+                                    class="form-control form-control-solid" hidden />
+                            </div>
+
+                            {{-- <!-- Owner -->
                             <div class="mb-3">
                                 <label class="form-label">Owner</label>
 
@@ -36,7 +40,7 @@
                                         </option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
 
 
                             <!-- name -->
@@ -81,12 +85,10 @@
                             <!-- Buttons -->
                             <div class="d-flex justify-content-between">
 
-                                <a href="{{ route('halls.index') }}" class="btn btn-secondary">
-                                    Back
+                                <a href="{{ route('indexHall', $ownerId) }}" class="btn btn-secondary"> Back
                                 </a>
 
-                                <button type="button" class="btn btn-success"
-                                    onclick="performUpdate({{ $halls->id }})">
+                                <button type="button" class="btn btn-success" onclick="performUpdate({{ $halls->id }})">
                                     Update
                                 </button>
 
@@ -100,7 +102,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 @section('scripts')

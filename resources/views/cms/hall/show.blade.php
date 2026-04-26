@@ -47,7 +47,7 @@
                     <b>Image:</b><br>
 
                     @if ($halls->image)
-                        <img src="{{ asset('storage/images/halls/' . $halls->image) }}" width="250" class="img-thumbnail">
+                        <img src="{{ asset('storage/images/hall/' . $halls->image) }}" width="250" class="img-thumbnail">
                     @else
                         <p>No Image Available</p>
                     @endif
@@ -55,7 +55,7 @@
 
                 {{-- Back Button --}}
                 <div class="mt-4">
-                    <a href="{{ route('halls.index') }}" class="btn btn-secondary">
+                    <a href="{{ route('indexHall', $ownerId) }}" class="btn btn-secondary">
                         Back
                     </a>
                 </div>

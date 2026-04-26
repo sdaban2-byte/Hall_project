@@ -12,6 +12,29 @@ class HallController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+
+    public function indexHall($id)
+    {
+        //display the hall to spacific owner ::with('hall_owner.user')
+
+        $halls = Hall::where('hall_owner_id', $id)->orderBy('id', 'desc')->paginate(10);
+        $hall_owners = HallOwner::with('user')->get();
+
+        return view('cms.hall.index', compact('halls', 'hall_owners', 'id'));
+    }
+
+
+    public function createHall($id)
+    {
+
+
+        // $halls = hall::all();
+        $hall_owners = HallOwner::with('user')->get();
+
+        return response()->view('cms.hall.create', compact('hall_owners', 'id'));
+    }
+
     public function index()
     {
 
@@ -20,7 +43,7 @@ class HallController extends Controller
             ->orderBy('id', 'desc')
             ->paginate(10);
 
-        return view('cms.hall.index', compact('halls'));
+        return view('cms.hall.indexAll', compact('halls'));
     }
 
 
@@ -65,10 +88,11 @@ class HallController extends Controller
         $hall->location = $request->location;
         $hall->description = $request->description;
 
-        // ✅ image fix
-        if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->storeAs('public/images/halls', $imageName);
+        if (request()->hasFile('image')) {
+
+            $image = $request->file('image');
+            $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+            $image->move('storage/images/hall', $imageName);
             $hall->image = $imageName;
         }
 
@@ -91,9 +115,11 @@ class HallController extends Controller
         // $hall_owner_id = HallOwner::all();
         // $halls = Hall::findOrFail($id);
 
-        $halls = Hall::with('hall_owner.user')->findOrFail($id);
 
-        return view('cms.hall.show', compact('halls'));
+        $halls = Hall::with('hall_owner.user')->findOrFail($id);
+        $ownerId = $halls->hall_owner_id;
+
+        return view('cms.hall.show', compact('halls', 'ownerId'));
     }
 
     /**
@@ -103,7 +129,8 @@ class HallController extends Controller
     {
         $halls = Hall::findOrFail($id);
         $hall_owners = HallOwner::with('user')->get();
-        return view('cms.hall.edit', compact('halls', 'hall_owners'));
+        $ownerId  = $halls->hall_owner_id;
+        return view('cms.hall.edit', compact('halls', 'ownerId', 'hall_owners'));
     }
 
     /**
@@ -133,7 +160,7 @@ class HallController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->route('halls.index');
+        return redirect()->route('indexHall', $hall->hall_owner_id);
     }
 
     /**

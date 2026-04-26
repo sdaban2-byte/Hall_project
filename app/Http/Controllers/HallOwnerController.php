@@ -13,8 +13,9 @@ class HallOwnerController extends Controller
      * Display a listing of the resource.
      */
     public function index()
+
     {
-        $hall_owners = HallOwner::orderBy('id', 'desc')->paginate(10);
+        $hall_owners = HallOwner::withCount('halls')->orderBy('id', 'desc')->paginate(10);
         return response()->view('cms.hall_owner.index', compact('hall_owners'));
     }
 

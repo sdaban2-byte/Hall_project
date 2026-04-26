@@ -1,10 +1,10 @@
 @extends('cms.parent')
 
-@section('title', 'create Hall')
+@section('title', 'create Hall Owner')
 
-@section('maintitle', 'create Hall')
+@section('maintitle', 'create Hall Owner')
 
-@section('subtitle', 'create Hall')
+@section('subtitle', 'create Hall Owner ')
 
 @section('styles')
 
@@ -15,7 +15,7 @@
         <div class="card card-info card-outline">
 
             <div class="card-header">
-                <h3 class="card-title">Create Hall</h3>
+                <h3 class="card-title">Create Hall Owner</h3>
             </div>
 
             <form class="needs-validation" novalidate>

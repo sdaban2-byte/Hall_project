@@ -16,9 +16,12 @@
 
                 <form id="hallForm">
 
-                    @csrf
 
-                    {{-- Owner --}}
+                    <div class="mb-3">
+                        <input type="text" name="hall_owner_id" id="hall_owner_id" value="{{ $id }}"
+                            class="form-control form-control-solid" hidden />
+                    </div>
+                    {{-- Owner
                     <div class="mb-3">
                         <label>Hall Owner</label>
 
@@ -32,6 +35,8 @@
                             @endforeach
                         </select>
                     </div>
+ --}}
+
 
                     {{-- Name --}}
                     <div class="mb-3">
@@ -72,7 +77,7 @@
                     <button type="button" class="btn btn-success" onclick="performStore()">
                         Save
                     </button>
-                    <a href="{{ route('halls.index') }}" class="btn btn-secondary">
+                    <a href="{{ route('indexHall',$id) }}" class="btn btn-secondary">
                         Back
                     </a>
                 </form>

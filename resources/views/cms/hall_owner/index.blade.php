@@ -31,11 +31,10 @@
                                     <tr>
                                         <th style="width: 10px" class="text-center">id</th>
                                         <th class="text-center">Image</th>
-                                        <th class="text-center">First name </th>
-                                        <th class="text-center">Last name</th>
+                                        <th class="text-center">Full name </th>
                                         <th class="text-center">Email</th>
                                         <th class="text-center">Company Name</th>
-                                        <th class="text-center">is_verified</th>
+                                        <th class="text-center">Halls</th>
                                         <th class="text-center">city name </th>
                                         <th class="text-center">sitting</th>
 
@@ -53,19 +52,23 @@
 
                                             </td>
 
-                                            <td>{{ $hall_owner->user->first_name ?? '' }}</td>
-                                            <td>{{ $hall_owner->user->last_name ?? '' }}</td>
+                                            <td> {{ optional($hall_owner->user)->first_name ?? 'No Owner' }}
+
+
+                                            </td>
                                             <td>{{ $hall_owner->email ?? '' }}</td>
 
                                             <td>{{ $hall_owner->company_name }}</td>
                                             {{-- edit to is_veridied --}}
-                                            <td>
+                                            {{-- <td>
                                                 <span
                                                     class="badge {{ $hall_owner->is_verified ? 'bg-success' : 'bg-danger' }}">
                                                     {{ $hall_owner->is_verified ? 'Verified' : 'Not Verified' }}
                                                 </span>
+                                            </td> --}}
+                                            <td><a href="{{ route('indexHall', ['id' => $hall_owner->id]) }}"
+                                                    class="btn bg-success">( {{ $hall_owner->halls_count }} )hall/s</a>
                                             </td>
-
 
                                             <td><span
                                                     class="badge bg-info">{{ $hall_owner->user->city->city_name ?? '' }}</span>
