@@ -1,6 +1,9 @@
 <?php
 
 use App\Models\User;
+use App\Models\Admin;
+use App\Models\Client;
+use App\Models\HallOwner;
 
 return [
 
@@ -42,6 +45,21 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+         'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'client' => [
+            'driver' => 'session',
+            'provider' => 'clients',
+        ],
+
+        'hall_owner' => [
+            'driver' => 'session',
+            'provider' => 'hall_owners',
+        ],
     ],
 
     /*
@@ -65,6 +83,20 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', User::class),
+        ],
+
+         'admins' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', Admin::class),
+        ],
+        'clients' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', Client::class),
+        ],
+
+        'hall_owners' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', HallOwner::class),
         ],
 
         // 'users' => [

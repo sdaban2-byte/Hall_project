@@ -4,27 +4,30 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CountryController;
-<<<<<<< HEAD
-=======
+
 use App\Http\Controllers\HallController;
 use App\Http\Controllers\HallOwnerController;
->>>>>>> bb07af8f579e967d33cd7d05883dd221c0c2479d
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\RoleController;
 
-
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> bb07af8f579e967d33cd7d05883dd221c0c2479d
 Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< HEAD
-Route::prefix('cms/admin')-> group(function (){
+Route::prefix('cms/')->middleware('guest:admin,client,hall_owner')->group(function(){
+  Route::get('{guard}/login' , [UserAuthController::class, 'showLogin'])->name('view.login');  
+  Route::post('{guard}/login', [UserAuthController::class, 'login']);
+});
+Route::prefix('cms/')->middleware('auth:admin,client,hall_owner')->group(function(){
+  Route::get('logout', [UserAuthController::class, 'logout'])->name('view.logout');
+});
+
+
+
+Route::prefix('cms/admin')->middleware('auth:admin,client,hall_owner')-> group(function (){
 Route::view('','cms.parent');
 Route::resource('countries',CountryController::class);
 Route::post('countries_update/{id}',[CountryController::class, 'update'])->name('countries_update');
@@ -42,7 +45,6 @@ Route::resource('reviews', ReviewController::class);
 Route::post('reviews_update/{id}',[ReviewController::class, 'update'])->name('reviews_update');
 
 });
-=======
 Route::prefix('cms/admin')->group(function () {
     Route::view('', 'cms.parent');
     Route::resource('countries', CountryController::class);
@@ -68,7 +70,11 @@ Route::prefix('cms/admin')->group(function () {
     Route::resource('halls', HallController::class);
     Route::post('halls_update/{id}', [HallController::class, 'update'])->name('halls_update');
 
+   Route::resource('roles', RoleController::class);
+    Route::post('roles_update/{id}', [RoleController::class, 'update'])->name('roles_update');
 
+     Route::resource('permissions', PermissionController::class);
+    Route::post('permissions_update/{id}', [PermissionController::class, 'update'])->name('permissions_update');
+    
 
     });
->>>>>>> bb07af8f579e967d33cd7d05883dd221c0c2479d
