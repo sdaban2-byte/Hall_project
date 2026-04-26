@@ -5,6 +5,7 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CountryController;
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HallController;
 use App\Http\Controllers\HallOwnerController;
 use App\Http\Controllers\PermissionController;
@@ -32,6 +33,10 @@ Route::view('','cms.parent');
 Route::resource('countries',CountryController::class);
 Route::post('countries_update/{id}',[CountryController::class, 'update'])->name('countries_update');
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::resource('cities', CityController::class);
 Route::post('cities_update/{id}',[CityController::class, 'update'])->name('cities_update');
 
@@ -46,6 +51,7 @@ Route::post('reviews_update/{id}',[ReviewController::class, 'update'])->name('re
 
 });
 Route::prefix('cms/admin')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::view('', 'cms.parent');
     Route::resource('countries', CountryController::class);
     Route::post('countries_update/{id}', [CountryController::class, 'update'])->name('countries_update');

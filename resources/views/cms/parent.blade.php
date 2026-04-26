@@ -301,7 +301,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link active">
+                                    <a href="{{ route('dashboard') }}" class="nav-link active">
                                         <i class="nav-icon bi bi-house-fill"></i>
                                         <p>Home</p>
                                     </a>
@@ -628,6 +628,7 @@
 
                             </ul>
                         </li>
+
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon bi bi-buildings"></i>
@@ -654,14 +655,9 @@
                                     </a>
 
                                 </li>
-                              
 
                             </ul>
-
                         </li>
-
-
-                         
                         <li class="nav-header">Authentication</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
