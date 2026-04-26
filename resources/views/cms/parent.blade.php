@@ -301,7 +301,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link active">
+                                    <a href="{{ route('dashboard') }}" class="nav-link active">
                                         <i class="nav-icon bi bi-house-fill"></i>
                                         <p>Home</p>
                                     </a>
@@ -556,6 +556,36 @@
                                         <i class="nav-icon bi bi-plus-circle-fill"></i>
                                         <p>
                                             create city
+                                        </p>
+                                    </a>
+
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-buildings"></i>
+                                <p>
+                                    Review
+                                    <i class="nav-arrow bi bi-chevron-right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('reviews.index') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-list-ul"></i>
+                                        <p>index Review</p>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="{{ route('reviews.create') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                        <p>
+                                            create Review
                                         </p>
                                     </a>
 

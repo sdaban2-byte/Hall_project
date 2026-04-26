@@ -4,10 +4,12 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HallController;
 use App\Http\Controllers\HallOwnerController;
 use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -21,9 +23,7 @@ Route::get('/', function () {
 
 Route::prefix('cms/admin')->group(function () {
 
-    Route::get('/', function () {
-        return view('cms.home');
-    });
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::view('', 'cms.parent');
     Route::resource('countries', CountryController::class);
     Route::post('countries_update/{id}', [CountryController::class, 'update'])->name('countries_update');
