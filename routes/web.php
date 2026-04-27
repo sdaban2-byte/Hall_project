@@ -3,12 +3,16 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HallController;
 use App\Http\Controllers\HallOwnerController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
+
+
 
 
 
@@ -51,4 +55,11 @@ Route::prefix('cms/admin')->group(function () {
 
     Route::get('/create/halls/{id}', [HallController::class, 'createHall'])->name('createHall');
     Route::get('/index/halls/{id}', [HallController::class, 'indexHall'])->name('indexHall');
+
+    Route::resource('sliders', SliderController::class);
+    Route::post('sliders_update/{id}', [SliderController::class, 'update'])->name('sliders_update');
+
+
+    Route::resource('contactUs', ContactUsController::class);
+    Route::post('contactUs_update/{id}', [ContactUsController::class, 'update'])->name('contactUs_update');
 });

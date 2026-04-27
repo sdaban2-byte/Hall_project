@@ -593,6 +593,64 @@
 
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-buildings"></i>
+                                <p>
+                                    Slider
+                                    <i class="nav-arrow bi bi-chevron-right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('sliders.index') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-list-ul"></i>
+                                        <p>index Slider</p>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="{{ route('sliders.create') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                        <p>
+                                            create Slider
+                                        </p>
+                                    </a>
+
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-buildings"></i>
+                                <p>
+                                    Contact Us
+                                    <i class="nav-arrow bi bi-chevron-right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('contactUs.index') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-list-ul"></i>
+                                        <p>index Contact Us</p>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="{{ route('contactUs.create') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                        <p>
+                                            create Contact Us
+                                        </p>
+                                    </a>
+
+                                </li>
+
+                            </ul>
+                        </li>
                         <li class="nav-header">Authentication</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
