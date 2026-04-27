@@ -301,7 +301,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('dashboard') }}" class="nav-link active">
+                                    <a href="./index.html" class="nav-link active">
                                         <i class="nav-icon bi bi-house-fill"></i>
                                         <p>Home</p>
                                     </a>
@@ -377,133 +377,10 @@
 
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-person-circle"></i>
 
-                                <p>
-                                    Hall Owner
-                                    <i class="nav-arrow bi bi-chevron-right"></i>
-                                </p>
-                            </a>
-
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('hall_owners.index') }}" class="nav-link">
-                                        <i class="nav-icon bi bi-list-ul"></i>
-                                        <p>index</p>
-                                    </a>
-                                </li>
-
-
-                                <li class="nav-item">
-                                    <a href="{{ route('hall_owners.create') }}" class="nav-link">
-                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
-                                        <p>
-                                            create
-                                        </p>
-                                    </a>
-
-                                </li>
-
-                            </ul>
-                        </li>
-
-
-
-                        <li class="nav-header">Hall Management</li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-globe-americas"></i>
-                                <p>
-                                    Hall detailes
-                                    <i class="nav-arrow bi bi-chevron-right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('halls.index') }}" class="nav-link">
-                                        <i class="nav-icon bi bi-list-ul"></i>
-                                        <p>index All Hall</p>
-                                    </a>
-                                </li>
-
-
-                                {{-- <li class="nav-item">
-                                    <a href="{{ route('halls.create') }}" class="nav-link">
-                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
-                                        <p>
-                                            create Hall
-                                        </p>
-                                    </a>
-
-                                </li> --}}
-
-                            </ul>
-                        </li>
-
-                        {{-- <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-buildings"></i>
-                                <p>
-                                    City
-                                    <i class="nav-arrow bi bi-chevron-right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('cities.index') }}" class="nav-link">
-                                        <i class="nav-icon bi bi-list-ul"></i>
-                                        <p>index city</p>
-                                    </a>
-                                </li>
-
-
-                                <li class="nav-item">
-                                    <a href="{{ route('cities.create') }}" class="nav-link">
-                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
-                                        <p>
-                                            create city
-                                        </p>
-                                    </a>
-
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-buildings"></i>
-                                <p>
-                                    Review
-                                    <i class="nav-arrow bi bi-chevron-right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('reviews.index') }}" class="nav-link">
-                                        <i class="nav-icon bi bi-list-ul"></i>
-                                        <p>index Review</p>
-                                    </a>
-                                </li>
-
-
-                                <li class="nav-item">
-                                    <a href="{{ route('reviews.create') }}" class="nav-link">
-                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
-                                        <p>
-                                            create Review
-                                        </p>
-                                    </a>
-
-                                </li>
-
-                            </ul>
-                        </li> --}}
 
                         <li class="nav-header">Content Management</li>
-
+<
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon bi bi-globe-americas"></i>
@@ -563,7 +440,6 @@
 
                             </ul>
                         </li>
-
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon bi bi-buildings"></i>
@@ -593,64 +469,51 @@
 
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-buildings"></i>
-                                <p>
-                                    Slider
-                                    <i class="nav-arrow bi bi-chevron-right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('sliders.index') }}" class="nav-link">
-                                        <i class="nav-icon bi bi-list-ul"></i>
-                                        <p>index Slider</p>
-                                    </a>
-                                </li>
 
+                        <li class="nav-header">Hall Management</li>
+                        <li class="nav-header">TEST NEW MENU</li>
 
-                                <li class="nav-item">
-                                    <a href="{{ route('sliders.create') }}" class="nav-link">
-                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
-                                        <p>
-                                            create Slider
-                                        </p>
-                                    </a>
+@foreach([
+    ['hall-owners','Hall Owners','bi-person-badge'],
+    ['halls','Halls','bi-building'],
+    ['contacts','Contacts','bi-envelope'],
+    ['contact-us','Contact Us','bi-chat-dots'],
+    ['sliders','Sliders','bi-images'],
 
-                                </li>
+    // New tables
+    ['services','Services','bi-list-check'],
+    ['hallServices','Hall Services','bi-diagram-3'],
+    ['bookings','Bookings','bi-calendar-check'],
+    ['aboutUs','About Us','bi-info-circle'],
+] as $menuItem)
 
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-buildings"></i>
-                                <p>
-                                    Contact Us
-                                    <i class="nav-arrow bi bi-chevron-right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('contactUs.index') }}" class="nav-link">
-                                        <i class="nav-icon bi bi-list-ul"></i>
-                                        <p>index Contact Us</p>
-                                    </a>
-                                </li>
+<li class="nav-item">
+    <a href="#" class="nav-link">
+        <i class="nav-icon bi {{ $menuItem[2] }}"></i>
+        <p>
+            {{ $menuItem[1] }}
+            <i class="nav-arrow bi bi-chevron-right"></i>
+        </p>
+    </a>
 
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="{{ route($menuItem[0].'.index') }}" class="nav-link">
+                <i class="nav-icon bi bi-list-ul"></i>
+                <p>index</p>
+            </a>
+        </li>
 
-                                <li class="nav-item">
-                                    <a href="{{ route('contactUs.create') }}" class="nav-link">
-                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
-                                        <p>
-                                            create Contact Us
-                                        </p>
-                                    </a>
+        <li class="nav-item">
+            <a href="{{ route($menuItem[0].'.create') }}" class="nav-link">
+                <i class="nav-icon bi bi-plus-circle-fill"></i>
+                <p>create</p>
+            </a>
+        </li>
+    </ul>
+</li>
 
-                                </li>
-
-                            </ul>
-                        </li>
+@endforeach
                         <li class="nav-header">Authentication</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">

@@ -11,12 +11,10 @@ use App\Http\Controllers\HallOwnerController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
-
-
-
-
-
-
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\HallServiceController;
+use App\Http\Controllers\AboutUsController;
 
 
 Route::get('/', function () {
@@ -26,6 +24,10 @@ Route::get('/', function () {
 
 
 Route::prefix('cms/admin')->group(function () {
+    Route::resource('bookings', BookingController::class);
+Route::resource('services', ServiceController::class);
+Route::resource('hallServices', HallServiceController::class);
+Route::resource('aboutUs', AboutUsController::class);
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::view('', 'cms.parent');
