@@ -32,7 +32,7 @@ class HallController extends Controller
         // $halls = hall::all();
         $hall_owners = HallOwner::with('user')->get();
 
-        return response()->view('cms.hall.create', compact('hall_owners', 'id'));
+    return view('cms.hall.create', ['id' => null]);
     }
 
     public function index()

@@ -18,7 +18,7 @@
 
 
                     <div class="mb-3">
-                        <input type="text" name="hall_owner_id" id="hall_owner_id" value="{{ $id }}"
+                        <input type="hidden" name="hall_owner_id" value="{{ $id ?? request()->route('id') }}">
                             class="form-control form-control-solid" hidden />
                     </div>
                     {{-- Owner
