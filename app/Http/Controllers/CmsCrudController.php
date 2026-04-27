@@ -11,34 +11,38 @@ class CmsCrudController extends Controller
     protected string $title;
     protected array $fields = [];
 
-   public function index()
+public function index()
 {
-    $data = $this->model::all();
+    $items = $this->model::paginate(10);
 
     return view('cms.crud.index', [
-        'data' => $data,
+        'items' => $items,          
         'title' => $this->title,
-        'route' => $this->route,
+        'routeName' => $this->route,
         'fields' => $this->fields,
     ]);
 }
 
-    public function create()
-    {
-        return view('cms.crud.create');
-    }
+   public function create()
+{
+    return view('cms.crud.create', [
+        'title' => $this->title,
+        'routeName' => $this->route,
+        'fields' => $this->fields,
+    ]);
+}
 
-    public function store(Request $request)
-    {
-        $this->model::create($request->all());
-        return redirect()->route($this->route.'.index');
-    }
+  public function edit($id)
+{
+    $item = $this->model::findOrFail($id);
 
-    public function edit($id)
-    {
-        $item = $this->model::findOrFail($id);
-        return view('cms.crud.edit', compact('item'));
-    }
+    return view('cms.crud.edit', [
+        'item' => $item,
+        'title' => $this->title,
+  'routeName' => $this->route,
+          'fields' => $this->fields,
+    ]);
+}
 
     public function update(Request $request, $id)
     {

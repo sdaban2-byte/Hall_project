@@ -474,10 +474,9 @@
                         <li class="nav-header">TEST NEW MENU</li>
 
 @foreach([
-    ['hall-owners','Hall Owners','bi-person-badge'],
+    ['hall_owners','Hall Owners','bi-person-badge'],
     ['halls','Halls','bi-building'],
-    ['contacts','Contacts','bi-envelope'],
-    ['contact-us','Contact Us','bi-chat-dots'],
+    ['contactUs','Contact Us','bi-chat-dots'],
     ['sliders','Sliders','bi-images'],
 
     // New tables
