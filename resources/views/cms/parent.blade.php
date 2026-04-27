@@ -377,6 +377,7 @@
 
                             </ul>
                         </li>
+
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon bi bi-person-circle"></i>
@@ -441,6 +442,70 @@
                                 </li> --}}
 
                             </ul>
+                        </li>
+
+                        <li class="nav-header">Roles && permissions</li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-shield-lock"></i>
+                                <p>
+                                    Role
+                                    <i class="nav-arrow bi bi-chevron-right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('roles.index') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-list-ul"></i>
+                                        <p>index Role</p>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="{{ route('roles.create') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                        <p>
+                                            create Role
+                                        </p>
+                                    </a>
+
+                                </li>
+
+
+                            </ul>
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-shield-lock"></i>
+                                <p>
+                                    Permission
+                                    <i class="nav-arrow bi bi-chevron-right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('permissions.index') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-list-ul"></i>
+                                        <p>index Role</p>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="{{ route('permissions.create') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                        <p>
+                                            create Role
+                                        </p>
+                                    </a>
+
+                                </li>
+
+
+                            </ul>
+
                         </li>
 
                         {{-- <li class="nav-item">
@@ -591,7 +656,9 @@
 
                                 </li>
 
+
                             </ul>
+
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -651,6 +718,10 @@
 
                             </ul>
                         </li>
+
+
+
+
                         <li class="nav-header">Authentication</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -668,7 +739,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('view.login', ['guard' => request()->segment(2) ?? 'admin']) }}" class="nav-link">
                                         <i class="nav-icon bi bi-box-arrow-in-right"></i>
                                         <p>
                                             login
@@ -676,9 +747,9 @@
                                         </p>
                                     </a>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('view.logout') }}" class="nav-link">
                                         <i class="nav-icon bi bi-box-arrow-right text-danger"></i>
-                                        <p>
+                  ٍ                      <p>
                                             logout
                                             <i class="nav-arrow bi bi-chevron-right"></i>
                                         </p>
