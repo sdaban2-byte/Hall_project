@@ -28,12 +28,10 @@ class HallController extends Controller
     public function createHall($id)
     {
 
-
-        // $halls = hall::all();
-        $hall_owners = HallOwner::with('user')->get();
-
-    return view('cms.hall.create', ['id' => null]);
-    }
+    return view('cms.hall.create', [
+        'id' => null
+    ]);
+}
 
     public function index()
     {

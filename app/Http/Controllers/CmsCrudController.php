@@ -90,7 +90,12 @@ public function show($id)
 {
     $item = $this->model::findOrFail($id);
 
-    return view('cms.crud.show', compact('item'));
+    return view('cms.crud.show', [
+        'item' => $item,
+        'title' => $this->title,
+        'routeName' => $this->route,
+        'fields' => $this->fields,
+    ]);
 }
 
 }
