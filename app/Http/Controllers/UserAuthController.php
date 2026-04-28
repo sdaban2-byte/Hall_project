@@ -8,37 +8,49 @@ use Illuminate\Support\Facades\Hash;
 
 class UserAuthController extends Controller
 {
-   
-   
+
+
     public function showLogin($guard) {
         return response()->view('cms.auth.login', compact('guard'));
     }
 
-  
-    public function login(Request $request) {
-    $guard = $request->input('guard');
-    $credentials = $request->only('email', 'password');
 
-    if (Auth::guard($guard)->attempt($credentials)) {
-     
-        $redirectUrl = match($guard) {
-            'admin'      => '/cms/admin',
-            'hall_owner' => '/cms/admin', 
-            'client'     => '/cms/admin',              
-            
-        };
+    public function login(Request $request){
 
-        return response()->json([
-            'message' => 'Login successful',
-            'redirect_url' => $redirectUrl 
-        ], 200);
-    }
+        $validator = Validator($request->all(),[
+            'email' => 'required|string|email',
+            'password' => 'required|string|min:3',
+            'remember' => 'boolean',
+            'guard' => 'required|string|in:admin',
+          ]
+          ,[
+              'email.required' => 'Please, Enter your email',
+              'email.email' => 'your Email not correct',
+              'password.required' => 'Please, Enter your password',
+              'guard.in' => 'verify from true url login account'
+          ]
+      );
 
-    return response()->json(['message' => 'Invalid credentials'], 401);
-}
-    
+          $credenials = [
+             'email'=>$request->get('email'),
+             'password'=>$request->get('password'),
 
-    public function logout(Request $request) 
+          ];
+          if(!$validator->fails()){
+            // dd();
+            if (Auth::guard($request->get('guard'))->attempt($credenials, $request->get('remember_me'))) {
+
+                  return response()->json(['message'=> 'Logged in successfully'],200);
+          }
+          else{
+              return response()->json(['message'=> 'Error email or password , login failed'], 400);
+          }
+      }
+          else{
+              return response()->json(['message'=> $validator->getMessageBag()->first()],400);
+          }
+   }
+    public function logout(Request $request)
 {
     $guard = '';
 
@@ -52,7 +64,7 @@ class UserAuthController extends Controller
 
     if ($guard) {
         Auth::guard($guard)->logout();
-       
+
     }
       $request->session()->invalidate();
  return redirect()->route('view.login', $guard);
@@ -60,20 +72,20 @@ class UserAuthController extends Controller
 }
 
     public function changepassword() {
-      
+
     }
 
-   
+
     public function reset(Request $request) {
-      
+
     }
 
-   
+
     public function editProfile() {
-        
+
     }
 
     public function updateProfile(Request $request, $id) {
-       
+
     }
 }

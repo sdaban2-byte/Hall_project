@@ -7,6 +7,7 @@ use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
@@ -14,11 +15,11 @@ class AdminController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
-        $admins = Admin::orderBy('id', 'desc')->paginate(10);
-        return response()->view('cms.admin.index', compact('admins'));
-    }
+{
+    $admins = Admin::with('user')->orderBy('id', 'desc')->paginate(10);
+
+    return response()->view('cms.admin.index', compact('admins'));
+}
     /**
      * Show the form for creating a new resource.
      */
@@ -26,7 +27,8 @@ class AdminController extends Controller
     {
         //
         $cities = City::all();
-        return response()->view('cms.admin.create', compact('cities'));
+        $roles = Role::where('guard_name' , 'admin')->get();
+        return response()->view('cms.admin.create', compact('cities' , 'roles'));
     }
 
     /**
@@ -39,7 +41,7 @@ class AdminController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
 
-            'password' => 'required',
+            'password' => 'required|string|min:6',
             'email' => 'nullable'
 
         ], [
@@ -65,6 +67,9 @@ class AdminController extends Controller
             $isSaved = $admins->save();
             if ($isSaved) {
                 $users = new User();
+ $role = Role::findById($request->get('role_id'));
+
+ $role = Role::where('id', $request->get('role_id'))->where('guard_name', 'admin')->first();
 
                 if (request()->hasFile('image')) {
 

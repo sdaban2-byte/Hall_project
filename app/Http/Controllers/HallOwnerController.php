@@ -6,6 +6,7 @@ use App\Models\City;
 use App\Models\HallOwner;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class HallOwnerController extends Controller
 {
@@ -26,7 +27,8 @@ class HallOwnerController extends Controller
     {
         //
         $cities = City::all();
-        return response()->view('cms.hall_owner.create', compact('cities'));
+        $roles = Role::where('guard_name' , 'hall_owner')->get();
+        return response()->view('cms.hall_owner.create', compact('cities' , 'roles'));
     }
 
     /**
@@ -67,6 +69,9 @@ class HallOwnerController extends Controller
             $isSaved = $hall_owners->save();
             if ($isSaved) {
                 $users = new User();
+             $role = Role::findById($request->get('role_id'));
+                 $hall_owners->assignRole($role->name);
+
 
                 if (request()->hasFile('image')) {
 

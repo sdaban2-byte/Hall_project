@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\RolePermissionController;
+
 
 
 Route::get('/', function () {
@@ -21,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::prefix('cms/')->middleware('guest:admin,client,hall_owner')->group(function(){
-  Route::get('{guard}/login' , [UserAuthController::class, 'showLogin'])->name('view.login');  
+  Route::get('{guard}/login' , [UserAuthController::class, 'showLogin'])->name('view.login');
   Route::post('{guard}/login', [UserAuthController::class, 'login']);
 });
 Route::prefix('cms/')->middleware('auth:admin,client,hall_owner')->group(function(){
@@ -35,7 +37,7 @@ Route::view('','cms.parent');
 Route::resource('countries',CountryController::class);
 Route::post('countries_update/{id}',[CountryController::class, 'update'])->name('countries_update');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::resource('cities', CityController::class);
 Route::post('cities_update/{id}',[CityController::class, 'update'])->name('cities_update');
@@ -80,13 +82,13 @@ Route::prefix('cms/admin')->group(function () {
 
      Route::resource('permissions', PermissionController::class);
     Route::post('permissions_update/{id}', [PermissionController::class, 'update'])->name('permissions_update');
-   
+
     Route::resource('sliders', SliderController::class);
     Route::post('sliders_update/{id}', [SliderController::class, 'update'])->name('sliders_update');
 
 
     Route::resource('contactUs', ContactUsController::class);
     Route::post('contactUs_update/{id}', [ContactUsController::class, 'update'])->name('contactUs_update');
-
+    Route::resource('role.permissions', RolePermissionController::class);
 
     });

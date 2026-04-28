@@ -21,6 +21,16 @@
             <form class="needs-validation" novalidate>
                 <div class="card-body">
 
+                    <div class="mb-3">
+                        <label for="role_id" class="form-label">Role Name</label>
+                        <select class="form-select" id="role_id" name="role_id" required>
+                            <option value="" disabled selected>Select Role</option>
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <!-- City -->
                     <div class="mb-3">
                         <label for="city_id" class="form-label">City</label>
@@ -133,6 +143,8 @@
             formData.append('mobile', document.getElementById('mobile').value);
             formData.append('gender', document.getElementById('gender').value);
             formData.append('status', document.getElementById('status').value);
+             formData.append('role_id', document.getElementById('role_id').value);
+
             formData.append('image', document.getElementById('image').files[0]);
 
 

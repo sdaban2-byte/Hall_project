@@ -6,6 +6,7 @@ use App\Models\City;
 use App\Models\Client;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class ClientController extends Controller
 {
@@ -26,7 +27,9 @@ class ClientController extends Controller
     {
         //
          $cities = City::all();
-        return response()->view('cms.client.create', compact('cities'));
+    $roles = Role::where('guard_name' , 'client')->get();
+
+        return response()->view('cms.client.create', compact('cities' , 'roles'));
     }
 
     /**
@@ -65,6 +68,8 @@ class ClientController extends Controller
             $isSaved = $clients->save();
             if ($isSaved) {
                 $users = new User();
+                $role = Role::findById($request->get('role_id'));
+                 $clients->assignRole($role->name);
 
                 if (request()->hasFile('image')) {
 
