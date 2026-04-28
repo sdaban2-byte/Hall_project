@@ -299,17 +299,15 @@
                                     <i class="nav-arrow bi bi-chevron-right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('dashboard') }}" class="nav-link active">
-                                        <i class="nav-icon bi bi-house-fill"></i>
-                                        <p>Home</p>
-                                    </a>
-                                </li>
 
+                        </li>
+                        <li class="nav-header"> Management</li>
 
-
-                            </ul>
+                        <li class="nav-item">
+                            <a href="{{ route('statiscticDashboard') }}" class="nav-link">
+                                <i class="nav-icon bi bi-list-ul"></i>
+                                <p>dashboard-Statistic</p>
+                            </a>
                         </li>
 
 
@@ -507,6 +505,20 @@
                             </ul>
 
                         </li>
+                        {{-- <li class="nav-item"> --}}
+                        {{-- <a href="{{ route('statiscticDashboard') }}" class="nav-link">
+                                <i class="nav-icon bi bi-person-circle"></i>
+
+                                <p>
+
+                                    <i class="nav-arrow bi bi-chevron-right"></i>
+                                </p>
+                            </a>
+ --}}
+
+
+
+                        {{-- </li> --}}
 
                         {{-- <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -739,7 +751,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('view.login', ['guard' => request()->segment(2) ?? 'admin']) }}" class="nav-link">
+                                    <a href="{{ route('view.login', ['guard' => request()->segment(2) ?? 'admin']) }}"
+                                        class="nav-link">
                                         <i class="nav-icon bi bi-box-arrow-in-right"></i>
                                         <p>
                                             login
@@ -749,7 +762,7 @@
                                 <li class="nav-item">
                                     <a href="{{ route('view.logout') }}" class="nav-link">
                                         <i class="nav-icon bi bi-box-arrow-right text-danger"></i>
-                  ٍ                      <p>
+                                        ٍ <p>
                                             logout
                                             <i class="nav-arrow bi bi-chevron-right"></i>
                                         </p>
