@@ -109,18 +109,18 @@
         <h2 class="text-center mb-5">Featured Halls</h2>
 
         <div class="row g-4">
-@foreach ( $halls as $hall)
-<div class="col-md-4">
-                <div class="card shadow">
-                    <img class="card-img-top" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486">
-                    <div class="card-body text-center">
-                        <h5>Royal Hall</h5>
-                        <p>Capacity: 300 Guests</p>
-                        <a href="#" class="btn btn-dark w-100">View Details</a>
+            @foreach ($halls as $hall)
+                <div class="col-md-4">
+                    <div class="card shadow">
+                        <img class="card-img-top" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486">
+                        <div class="card-body text-center">
+                            <h5>{{  }}</h5>
+                            <p>Capacity: 300 Guests</p>
+                            <a href="#" class="btn btn-dark w-100">View Details</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-@endforeach
+            @endforeach
 
 
         </div>

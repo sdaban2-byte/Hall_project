@@ -6,6 +6,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\HallController;
 use App\Http\Controllers\HallOwnerController;
 use App\Http\Controllers\PermissionController;
@@ -51,6 +52,7 @@ Route::prefix('cms/admin')->middleware('auth:admin,client,hall_owner')->group(fu
 });
 Route::prefix('cms/admin')->group(function () {
 
+
     Route::view('', 'cms.parent');
     Route::resource('countries', CountryController::class);
     Route::post('countries_update/{id}', [CountryController::class, 'update'])->name('countries_update');
@@ -94,4 +96,8 @@ Route::prefix('cms/admin')->group(function () {
 
     Route::resource('contactUs', ContactUsController::class);
     Route::post('contactUs_update/{id}', [ContactUsController::class, 'update'])->name('contactUs_update');
+});
+
+Route::prefix('halls/')->group(function () {
+    Route::get('index', [HomeController::class, 'home'])->name('index');
 });
