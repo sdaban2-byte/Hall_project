@@ -109,8 +109,8 @@
         <h2 class="text-center mb-5">Featured Halls</h2>
 
         <div class="row g-4">
-
-            <div class="col-md-4">
+@foreach ( $halls as $hall)
+<div class="col-md-4">
                 <div class="card shadow">
                     <img class="card-img-top" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486">
                     <div class="card-body text-center">
@@ -120,6 +120,8 @@
                     </div>
                 </div>
             </div>
+@endforeach
+
 
         </div>
 

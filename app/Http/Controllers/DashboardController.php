@@ -23,7 +23,7 @@ class DashboardController extends Controller
         // $bookingsCount = Booking::count();
         $reviewsCount = Review::count();
 
-        return view('cms.dashboard', compact(
+        return view('cms.statiscticDashboard', compact(
             'usersCount',
             'adminsCount',
             'clientsCount',
