@@ -7,6 +7,7 @@ use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
@@ -15,8 +16,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
-        $admins = Admin::orderBy('id', 'desc')->paginate(10);
+        $admins = Admin::with('user')->orderBy('id', 'desc')->paginate(10);
+
         return response()->view('cms.admin.index', compact('admins'));
     }
     /**
@@ -26,7 +27,8 @@ class AdminController extends Controller
     {
         //
         $cities = City::all();
-        return response()->view('cms.admin.create', compact('cities'));
+        $roles = Role::where('guard_name', 'admin')->get();
+        return response()->view('cms.admin.create', compact('cities', 'roles'));
     }
 
     /**
@@ -39,7 +41,7 @@ class AdminController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
 
-            'password' => 'required',
+            'password' => 'required|string|min:6',
             'email' => 'nullable'
 
         ], [
@@ -64,28 +66,35 @@ class AdminController extends Controller
 
             $isSaved = $admins->save();
             if ($isSaved) {
+                // $users = new User();
+                // $role = Role::findById($request->get('role_id'));
+
+                $role = Role::where('id', $request->role_id)
+                    ->where('guard_name', 'admin')
+                    ->firstOrFail();
+
                 $users = new User();
 
-                if (request()->hasFile('image')) {
-
+                if ($request->hasFile('image')) {
                     $image = $request->file('image');
                     $imageName = time() . 'image.' . $image->getClientOriginalExtension();
                     $image->move('storage/images/admin', $imageName);
                     $users->image = $imageName;
                 }
 
-                $users->first_name = $request->input('first_name'); # لانه بكتب get is deprecated
-                $users->last_name = $request->input('last_name');
-                $users->mobile = $request->input('mobile');
-                $users->address = $request->input('address');
-                $users->gender = $request->input('gender');
-                $users->date = $request->input('date');
-                $users->status = $request->input('status');
-                $users->city_id = $request->input('city_id');
+                $users->first_name = $request->first_name;
+                $users->last_name = $request->last_name;
+                $users->mobile = $request->mobile;
+                $users->address = $request->address;
+                $users->gender = $request->gender;
+                $users->date = $request->date;
+                $users->status = $request->status;
+                $users->city_id = $request->city_id;
+
                 $users->actor()->associate($admins);
-                $isSaved = $users->save();
+                $users->save();
 
-
+                $users->assignRole($role);
                 return response()->json([
                     'icon' => 'success',
                     'title' => 'Crearted is Successfully',

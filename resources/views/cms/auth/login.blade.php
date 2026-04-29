@@ -109,7 +109,7 @@
             <!--end::Row-->
           </form>
 
-        
+
 
           <p class="mb-1">
             <a href="forgot-password.html">I forgot my password</a>
@@ -170,8 +170,11 @@
       });
 
     </script>
-   
 
+
+
+        <script src="{{ asset('cms/dist/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('cms/dist/js/adminlte.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="{{ asset('js/crud.js') }}"></script>
@@ -179,36 +182,21 @@
     <!--end::Script-->
     <script>
     function login() {
-        let data = {
-            email: document.getElementById('email').value,
-            password: document.getElementById('password').value,
-            guard: document.getElementById('guard').value ,
-        };
-
-        var guard = '{{ request('guard') }}';
-        axios.post('/cms/'+guard+'/login', data)
-            .then(function (response) {
-               
-                Swal.fire({
-                    icon: 'success',
-                    title: 'login successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-
-                setTimeout(() => {
-                    window.location.href = response.data.redirect_url; 
-                }, 1500);
-            })
-            .catch(function (error) {
-                
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Failed to login',
-                    text: error.response.data.message || 'verify from your data'
-                });
-            });
-    }
+    var guard = '{{request('guard')}}';
+    axios.post('/cms/'+guard+'/login', {
+      email: document.getElementById('email').value,
+      password: document.getElementById('password').value,
+      remember_me: document.getElementById('remember').checked,
+      guard: guard
+    })
+    .then(function (response) {
+        window.location.href = '/cms/admin'
+        // showToaster(response.data.message, true);
+    })
+    .catch(function (error) {
+        showToaster(error.response.data.message, false);
+    });
+  }
 </script>
   </body>
   <!--end::Body-->

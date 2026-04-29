@@ -1,38 +1,70 @@
-<!DOCTYPE html>
-<html>
+@extends('front.master')
 
-<head>
-  <title>Contact</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
 
-<body>
-  <!-- NAV -->
-  <nav class="navbar navbar-dark px-4 py-3">
-    <a href="index.html" class="text-warning text-decoration-none fw-bold">← Back</a>
-    <h5 class="text-white m-0">Contact Us</h5>
-    <div></div>
-  </nav>
+@section('title', 'Contact us ')
 
-  <div class="page-header">
-    <h2></h2>
-  </div>
+@section('styles')
 
-  <section class="section container">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <form class="col-md-6 mx-auto">
 
-      <input class="form-control mb-3" placeholder="Name">
-      <input class="form-control mb-3" placeholder="Email">
-      <textarea class="form-control mb-3" placeholder="Message"></textarea>
 
-      <button class="btn btn-dark w-100">Send</button>
+@endsection
+@section('content')
 
-    </form>
+    <div class="page-header">
 
-  </section>
+        <h5 class="text-white m-0">Contact Us</h5>
 
-</body>
 
-</html>
+    </div>
+
+    <section class="section container">
+
+        <form class="col-md-6 mx-auto">
+            @csrf
+            <label class="form-label">name</label>
+            <input class="form-control" id="name" name="name" rows="4" placeholder="Write your name ..."></input>
+
+            <!-- email -->
+            <div class="mb-3">
+                <label class="form-label">email</label>
+                <input class="form-control" id="email" name="email" rows="4"
+                    placeholder="Write your email ..."></input>
+            </div>
+
+
+            <!-- description -->
+            <div class="mb-3">
+                <label class="form-label">massege</label>
+                <textarea class="form-control" id="massege" name="massege" rows="10" placeholder="Write your  massege ..."></textarea>
+            </div>
+
+            <button type="button" onclick="storeContact()" class="btn btn-dark w-100">Send</button>
+
+        </form>
+
+    </section>
+
+
+
+
+@endsection
+@section('script')
+    <script src="{{ asset('js/crud.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function storeContact() {
+            let formData = new FormData();
+
+            formData.append('name', document.getElementById('name').value);
+            formData.append('email', document.getElementById('email').value);
+            formData.append('massege', document.getElementById('massege').value);
+            store('/halls/contactus', formData);
+        }
+    </script>
+
+@endsection

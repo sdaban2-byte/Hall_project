@@ -47,8 +47,8 @@
                                             <td>{{ $client->id }}</td>
 
                                             <td>
-                                                <img src="{{ asset('storage/images/client/' . $client->user->image ?? '') }}"
-                                                    class="rounded-circle" alt="user Image" width="50" height="50">
+                                                <img src="{{ asset('storage/images/client/' . optional($client->user)->image) }}"
+                                                    class="rounded-circle" width="50" height="50">
 
                                             </td>
 

@@ -31,7 +31,8 @@
                           <th style="width: 10px" class="text-center">id</th>
                           <th class="text-center">Role_name</th>
                           <th class="text-center">guard_name</th>
-                    
+                          <th class="text-center">Permissions</th>
+
                           <th class="text-center">Action</th>
 
                         </tr>
@@ -45,6 +46,9 @@
                             <td>{{ $role->id }}</td>
                             <td>{{ $role->name}}</td>
                             <td>{{ $role->guard_name}}</td>
+                            <td><a href="{{route('role.permissions.index',$role->id)}}"
+                      class="btn btn-info">({{ $role->permissions->count() }})
+                      permission/s</a></td>
                             <td class="text-center">
             <div class="btn-group">
 

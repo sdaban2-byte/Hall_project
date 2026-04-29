@@ -35,11 +35,11 @@
         <div class="collapse navbar-collapse" id="nav">
             <ul class="navbar-nav ms-auto">
 
-                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('home.page') }}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="#halls">Halls</a></li>
                 <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('contactus.page') }}">Contact us</a></li>
 
 
                 <li class="nav-item ms-3">
@@ -71,7 +71,7 @@
         © 2026 Elite Wedding Halls
     </div>
 
-
+    @yield('script')
 </body>
 
 </html>

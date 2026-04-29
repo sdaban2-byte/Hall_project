@@ -1,6 +1,6 @@
 @extends('front.master')
 
-@section('title', 'Temp Title')
+@section('title', 'Index Title')
 
 @section('styles')
     <style>
@@ -112,11 +112,11 @@
             @foreach ($halls as $hall)
                 <div class="col-md-4">
                     <div class="card shadow">
-                        <img class="card-img-top" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486">
+                        <img class="card-img-top" src="{{ asset('storage/images/hall/' . $hall->image) }}">
                         <div class="card-body text-center">
-                            <h5>{{  }}</h5>
-                            <p>Capacity: 300 Guests</p>
-                            <a href="#" class="btn btn-dark w-100">View Details</a>
+                            <h5>{{ $hall->name }}</h5>
+                            <p>Capacity: {{ $hall->capacity }} Guests</p>
+                            <a href="{{ route('hall_detiles.page', $hall->id) }}"class="btn btn-dark w-100">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
         </div>
 
         <div class="text-center mt-5">
-            <a href="#" class="btn btn-outline-dark btn-lg">
+            <a href="{{ route('all_halls.page') }}" class="btn btn-outline-dark btn-lg">
                 Explore All Halls →
             </a>
         </div>
@@ -140,26 +140,27 @@
 
         <div class="row g-3 mb-4">
 
-            <div class="col-md-6">
-                <div class="card shadow-sm p-3 border-0">
-                    <p class="mb-1">“Amazing place! Everything was perfect.”</p>
-                    <small class="text-warning">— Sara</small>
+            @foreach ($reviews as $review)
+                <div class="col-md-6">
+                    <div class="card shadow-sm p-3 border-0">
+                        <p class="mb-1">“{{ $review->comment }}”</p>
+                        <small class="text-warning">— {{ optional($review->client->user)->first_name }}</small>
+                    </div>
                 </div>
-            </div>
+            @endforeach
 
-            <div class="col-md-6">
-                <div class="card shadow-sm p-3 border-0">
-                    <p class="mb-1">“Very clean, elegant and professional service.”</p>
-                    <small class="text-warning">— Ahmed</small>
-                </div>
-            </div>
+
+
 
         </div>
 
         <div class="card shadow p-4 border-0">
             <h5 class="mb-3">Write Your Review</h5>
 
-            <textarea class="form-control mb-3" rows="4" placeholder="Write your experience..."></textarea>
+            <textarea class="form-control mb-3" rows="4" placeholder="Write your experience...">
+
+
+            </textarea>
 
             <button class="btn btn-warning w-100 fw-bold">
                 Submit Review

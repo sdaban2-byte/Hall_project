@@ -31,7 +31,7 @@
                           <th style="width: 10px" class="text-center">id</th>
                           <th class="text-center">permission_name</th>
                           <th class="text-center">guard_name</th>
-                    
+
                           <th class="text-center">Action</th>
 
                         </tr>
