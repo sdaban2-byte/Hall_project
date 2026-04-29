@@ -51,7 +51,7 @@
                                             <td class="text-center">
                                                 <div class="btn-group">
 
-                                                    <a href="{{ route('contactUs.show', $contact_Us->id) }}"
+                                                    {{-- <a href="{{ route('contactUs.show', $contact_Us->id) }}"
                                                         class="btn btn-sm btn-outline-success">
                                                         <i class="bi bi-eye-fill"></i>
                                                     </a>
@@ -59,24 +59,16 @@
                                                     <a href="{{ route('contactUs.edit', $contact_Us->id) }}"
                                                         class="btn btn-sm btn-outline-primary">
                                                         <i class="bi bi-pencil-square"></i>
-                                                    </a>
+                                                    </a> --}}
 
-                                                    <form action="{{ route('contactUs.destroy', $contact_Us->id) }}"
-                                                        method="POST" style="display:inline;"
-                                                        onsubmit="return confirm('Delete this contactUs?');">
 
-                                                        @csrf
-                                                        @method('DELETE')
-
-                                                        <button type="submit" class="btn btn-sm btn-outline-danger">
-                                                            <i class="bi bi-trash3-fill"></i>
-                                                        </button>
-
-                                                    </form>
-
+                                                    <button type="button"
+                                                        onclick="confirmDestroy({{ $contact_Us->id }}, this)"
+                                                        class="btn btn-sm btn-outline-danger">
+                                                        <i class="bi bi-trash3-fill"></i>
+                                                    </button>
                                                 </div>
                                             </td>
-
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -109,9 +101,38 @@
                 @endsection
 
                 @section('scripts')
+
                     <script>
                         function confirmDestroy(id, reference) {
-                            destroy('/cms/admin/contactUs/' + id, reference);
+                            Swal.fire({
+                                title: "Are you sure?",
+                                text: "You won't be able to revert this!",
+                                icon: "warning",
+                                showCancelButton: true,
+                                confirmButtonText: "Yes, delete it!"
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+
+                                    fetch('/cms/admin/contactUs/' + id, {
+                                            method: 'DELETE',
+                                            headers: {
+                                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                                                'Accept': 'application/json'
+                                            }
+                                        })
+                                        .then(res => res.json())
+                                        .then(data => {
+
+                                            reference.closest('tr').remove(); // حذف مباشر بدون refresh
+
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: data.title
+                                            });
+
+                                        });
+                                }
+                            });
                         }
                     </script>
 

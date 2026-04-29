@@ -112,8 +112,13 @@
                     <!-- Image -->
                     <div class="mb-3">
                         <label for="image" class="form-label"ءء>Choose Image</label>
-                        <input type="file" class="form-control" id="image" disabled name="image"
-                            value="{{ $clients->user->image ?? '' }}">
+                        <br>
+                        @if ($clients->user->image)
+                            <img src="{{ asset('storage/images/client/' . $clients->user->image) }}" width="250"
+                                class="img-thumbnail">
+                        @else
+                            <p>No Image Available</p>
+                        @endif
                     </div>
 
                 </div>

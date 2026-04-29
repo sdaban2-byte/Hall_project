@@ -128,5 +128,7 @@ class ContactUsController extends Controller
         ContactUs::findOrFail($id)->delete();
 
         return redirect()->route('contactUs.index');
+
+     
     }
 }

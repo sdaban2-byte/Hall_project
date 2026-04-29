@@ -113,6 +113,8 @@ Route::prefix('cms/admin')->group(function () {
 
     Route::resource('contactUs', ContactUsController::class);
     Route::post('contactUs_update/{id}', [ContactUsController::class, 'update'])->name('contactUs_update');
+
+
     Route::resource('role.permissions', RolePermissionController::class);
 });
 Route::prefix('halls/')->group(function () {

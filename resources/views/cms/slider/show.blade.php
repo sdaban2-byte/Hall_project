@@ -35,8 +35,14 @@
                         <!-- Image -->
                         <div class="mb-3">
                             <label for="image" class="form-label"ءء>Choosen Image for Slider</label>
-                            <input type="file" class="form-control" id="image" disabled name="image"
-                                value="{{ $sliders->image ?? '' }}">
+                            <br>
+                        
+                            @if ($sliders->image)
+                                <img src="{{ asset('storage/images/slider/' . $sliders->image) }}" width="250"
+                                    class="img-thumbnail">
+                            @else
+                                <p>No Image Available</p>
+                            @endif
                         </div>
 
                     </div>
