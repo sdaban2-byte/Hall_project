@@ -51,7 +51,7 @@
                                             <td class="text-center">
                                                 <div class="btn-group">
 
-                                                    <a href="{{ route('contactUs.show', $contact_Us->id) }}"
+                                                    {{-- <a href="{{ route('contactUs.show', $contact_Us->id) }}"
                                                         class="btn btn-sm btn-outline-success">
                                                         <i class="bi bi-eye-fill"></i>
                                                     </a>
@@ -59,21 +59,20 @@
                                                     <a href="{{ route('contactUs.edit', $contact_Us->id) }}"
                                                         class="btn btn-sm btn-outline-primary">
                                                         <i class="bi bi-pencil-square"></i>
-                                                    </a>
+                                                    </a> --}}
 
-                                                    <form action="{{ route('contactUs.destroy', $contact_Us->id) }}"
+                                                    <form action="{{ route('hall_owners.destroy', $contact_Us->id) }}"
                                                         method="POST" style="display:inline;"
-                                                        onsubmit="return confirm('Delete this contactUs?');">
-
+                                                        onsubmit="return confirm('Are you sure you want to delete ({{ $contact_Us->name ?? 'this user' }})?');">
+                                                        {{-- رجّع null بدل error --}}
                                                         @csrf
                                                         @method('DELETE')
-
-                                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                        <button type="button"
+                                                            onclick="confirmDestroy({{ $contact_Us->id }}, this)"
+                                                            class="btn btn-sm btn-outline-danger" title="Delete">
                                                             <i class="bi bi-trash3-fill"></i>
                                                         </button>
-
                                                     </form>
-
                                                 </div>
                                             </td>
 
@@ -112,6 +111,7 @@
                     <script>
                         function confirmDestroy(id, reference) {
                             destroy('/cms/admin/contactUs/' + id, reference);
+
                         }
                     </script>
 

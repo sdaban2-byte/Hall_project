@@ -117,11 +117,18 @@
                     </div>
 
                     <!-- Image -->
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="image" class="form-label"ءء>Choose Image</label>
                         <input type="file" class="form-control" id="image" disabled name="image"
                             value="{{ $hall_owners->user->image ?? '' }}">
-                    </div>
+                    </div> --}}
+
+                    @if ($hall_owners->user->image ?? '')
+                        <img src="{{ asset('storage/images/hall_owner/' . $hall_owners->user->image) }}" width="250"
+                            class="img-thumbnail">
+                    @else
+                        <p>No Image Available</p>
+                    @endif
 
                 </div>
                 <div class="card-footer">

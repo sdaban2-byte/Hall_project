@@ -126,7 +126,9 @@ class ContactUsController extends Controller
     {
         //  $country = Country::findOrFail($id);
         ContactUs::findOrFail($id)->delete();
-
-        return redirect()->route('contactUs.index');
+        return response()->json([
+            'icon' => 'success',
+            'title' => 'Deleted successfully'
+        ]);
     }
 }
