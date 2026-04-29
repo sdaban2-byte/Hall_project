@@ -36,9 +36,9 @@
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item"><a class="nav-link" href="{{ route('home.page') }}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('home.page') }}#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('home.page') }}#halls">Halls</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('home.page') }}#reviews">Reviews</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#halls">Halls</a></li>
+                <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('contactus.page') }}">Contact us</a></li>
 
 

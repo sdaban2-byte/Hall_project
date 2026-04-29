@@ -119,6 +119,7 @@ Route::prefix('halls/')->group(function () {
     Route::get('index', [HomeController::class, 'home'])->name('home.page');
 
     Route::get('contactus', [HomeController::class, 'contactus'])->name('contactus.page');
+    // Route::post('contactus', [HomeController::class, 'storeContact']);
     Route::post('contactus', [HomeController::class, 'storeContact']);
     Route::get('all_halls', [HomeController::class, 'all_halls'])->name('all_halls.page');
     Route::get('hall_detiles/{id}', [HomeController::class, 'hall_detiles'])->name('hall_detiles.page');

@@ -110,20 +110,12 @@
                     </div>
 
                     <!-- Image -->
-                    {{-- <div class="mb-3">
+                    <div class="mb-3">
                         <label for="image" class="form-label"ءء>Choose Image</label>
                         <input type="file" class="form-control" id="image" disabled name="image"
                             value="{{ $admins->user->image ?? '' }}">
                     </div>
- --}}
 
-
-                    @if ($admins->user->image)
-                        <img src="{{ asset('storage/images/admin/' . $admins->user->image) }}" width="250"
-                            class="img-thumbnail">
-                    @else
-                        <p>No Image Available</p>
-                    @endif
                 </div>
                 <div class="card-footer">
 
