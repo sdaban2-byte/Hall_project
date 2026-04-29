@@ -19,4 +19,8 @@ class Hall extends Model
     {
         return $this->belongsTo(HallOwner::class, 'hall_owner_id');
     }
+    public function bookings()
+{
+    return $this->hasMany(Booking::class);
+}
 }

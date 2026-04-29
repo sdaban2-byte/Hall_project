@@ -16,6 +16,8 @@ use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\UserAuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookingController;
+
 
 
 
@@ -31,6 +33,10 @@ Route::prefix('cms/')->middleware('guest:admin,client,hall_owner')->group(functi
 Route::prefix('cms/')->middleware('auth:admin,client,hall_owner')->group(function () {
     Route::get('logout', [UserAuthController::class, 'logout'])->name('view.logout');
 });
+
+Route::get('/bookings', [BookingController::class, 'index']);
+
+
 
 
 
@@ -113,10 +119,14 @@ Route::prefix('cms/admin')->group(function () {
 
     Route::resource('contactUs', ContactUsController::class);
     Route::post('contactUs_update/{id}', [ContactUsController::class, 'update'])->name('contactUs_update');
-
-
     Route::resource('role.permissions', RolePermissionController::class);
+    Route::resource('bookings', BookingController::class);
+
+
+Route::post('bookings/{id}/approve', [BookingController::class, 'approve'])->name('bookings.approve');
+Route::post('bookings/{id}/reject', [BookingController::class, 'reject'])->name('bookings.reject');
 });
+
 Route::prefix('halls/')->group(function () {
     Route::get('index', [HomeController::class, 'home'])->name('home.page');
 

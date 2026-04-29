@@ -341,7 +341,7 @@
                                     </a>
 
                                 </li>
-
+                                
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -372,6 +372,7 @@
                                     </a>
 
                                 </li>
+                                
 
                             </ul>
                         </li>
@@ -411,33 +412,65 @@
 
 
                         <li class="nav-header">Hall Management</li>
+                         <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-person-circle"></i>
+
+                                <p>
+                                    Hall Owner
+                                    <i class="nav-arrow bi bi-chevron-right"></i>
+                                </p>
+                            </a>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('hall_owners.index') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-list-ul"></i>
+                                        <p>index</p>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="{{ route('hall_owners.create') }}" class="nav-link">
+                                        <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                        <p>
+                                            create
+                                        </p>
+                                    </a>
+
+                                </li>
+
+                            </ul>
+                        </li>
+
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon bi bi-globe-americas"></i>
                                 <p>
-                                    Hall detailes
+                                    Bookings
                                     <i class="nav-arrow bi bi-chevron-right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('halls.index') }}" class="nav-link">
+                                    <a href="{{ route('bookings.index') }}" class="nav-link">
                                         <i class="nav-icon bi bi-list-ul"></i>
-                                        <p>index All Hall</p>
+                                        <p>index</p>
                                     </a>
                                 </li>
 
 
-                                {{-- <li class="nav-item">
-                                    <a href="{{ route('halls.create') }}" class="nav-link">
+                                <li class="nav-item">
+                                    <a href="{{ route('bookings.create') }}" class="nav-link">
                                         <i class="nav-icon bi bi-plus-circle-fill"></i>
                                         <p>
-                                            create Hall
+                                            create Booking
                                         </p>
                                     </a>
 
-                                </li> --}}
+                                </li> 
 
                             </ul>
                         </li>
