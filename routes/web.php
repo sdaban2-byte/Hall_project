@@ -133,7 +133,8 @@ Route::prefix('halls/')->group(function () {
     Route::get('contactus', [HomeController::class, 'contactus'])->name('contactus.page');
     Route::post('contactus', [HomeController::class, 'storeContact']);
 
-    Route::get('booking', [HomeController::class, 'booking'])->name('booking.page');
+    // Route::get('booking', [HomeController::class, 'booking'])->name('booking.page');
+    Route::get('booking/{id}', [HomeController::class, 'booking'])->name('booking.page');
     Route::post('booking', [HomeController::class, 'storebooking']);
     Route::get('all_halls', [HomeController::class, 'all_halls'])->name('all_halls.page');
     Route::get('hall_detiles/{id}', [HomeController::class, 'hall_detiles'])->name('hall_detiles.page');

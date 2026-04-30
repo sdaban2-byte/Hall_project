@@ -33,7 +33,7 @@
             </ul>
         </div>
 
-        <a href="{{ route('booking.page') }}" class="btn btn-warning btn-lg mt-3">Book Now</a>
+        <a href="{{ route('booking.page', $halls->id) }}" class="btn btn-warning btn-lg mt-3">Book Now</a>
 
 
     </div>

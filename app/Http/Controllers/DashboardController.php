@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Booking;
 use App\Models\Client;
 use App\Models\Hall;
 use App\Models\HallOwner;
@@ -20,7 +21,7 @@ class DashboardController extends Controller
         $clientsCount = Client::count();
         $hallOwnersCount = HallOwner::count();
         $hallsCount = Hall::count();
-        // $bookingsCount = Booking::count();
+        $bookingsCount = Booking::count();
         $reviewsCount = Review::count();
 
         return view('cms.statiscticDashboard', compact(
@@ -29,7 +30,7 @@ class DashboardController extends Controller
             'clientsCount',
             'hallOwnersCount',
             'hallsCount',
-            // 'bookingsCount',
+            'bookingsCount',
             'reviewsCount'
         ));
     }

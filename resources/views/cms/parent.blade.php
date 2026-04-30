@@ -305,7 +305,7 @@
 
                         <li class="nav-item">
                             <a href="{{ route('statiscticDashboard') }}" class="nav-link">
-                                <i class="nav-icon bi bi-list-ul"></i>
+                                <i class="nav-icon bi bi-speedometer2"></i>
                                 <p>dashboard-Statistic</p>
                             </a>
                         </li>
@@ -315,7 +315,7 @@
                         <li class="nav-header">User Management</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-person-circle"></i>
+                                <i class="nav-icon bi bi-shield-lock"></i>
 
                                 <p>
                                     Admin
@@ -341,12 +341,12 @@
                                     </a>
 
                                 </li>
-                                
+
                             </ul>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-person-circle"></i>
+                                <i class="nav-icon bi bi-person"></i>
 
                                 <p>
                                     Client
@@ -372,14 +372,14 @@
                                     </a>
 
                                 </li>
-                                
+
 
                             </ul>
                         </li>
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-person-circle"></i>
+                                <i class="nav-icon bi bi-building"></i>
 
                                 <p>
                                     Hall Owner
@@ -412,9 +412,9 @@
 
 
                         <li class="nav-header">Hall Management</li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-person-circle"></i>
+                                <i class="nav-icon bi bi-house-door"></i>
 
                                 <p>
                                     Hall Owner
@@ -447,7 +447,7 @@
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-globe-americas"></i>
+                                <i class="nav-icon bi bi-calendar-check"></i>
                                 <p>
                                     Bookings
                                     <i class="nav-arrow bi bi-chevron-right"></i>
@@ -470,7 +470,7 @@
                                         </p>
                                     </a>
 
-                                </li> 
+                                </li>
 
                             </ul>
                         </li>
@@ -478,7 +478,7 @@
                         <li class="nav-header">Roles && permissions</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-shield-lock"></i>
+                                <i class="nav-icon bi bi-key"></i>
                                 <p>
                                     Role
                                     <i class="nav-arrow bi bi-chevron-right"></i>
@@ -509,7 +509,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-shield-lock"></i>
+                                <i class="nav-icon bi bi-lock"></i>
                                 <p>
                                     Permission
                                     <i class="nav-arrow bi bi-chevron-right"></i>
@@ -676,7 +676,7 @@
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-buildings"></i>
+                                <i class="nav-icon bi bi-star""></i>
                                 <p>
                                     Review
                                     <i class="nav-arrow bi bi-chevron-right"></i>
@@ -707,7 +707,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-buildings"></i>
+                                <i class="nav-icon bi bi-star""></i>
                                 <p>
                                     Slider
                                     <i class="nav-arrow bi bi-chevron-right"></i>
@@ -736,7 +736,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-buildings"></i>
+                                <i class="nav-icon bi bi-envelope"></i>
                                 <p>
                                     Contact Us
                                     <i class="nav-arrow bi bi-chevron-right"></i>
@@ -770,7 +770,7 @@
                         <li class="nav-header">Authentication</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-person-plus-fill"></i>
+                                <i class="nav-icon bi bi-person-circle"></i>
                                 <p>
                                     Authentication
                                     <i class="nav-arrow bi bi-chevron-right"></i>

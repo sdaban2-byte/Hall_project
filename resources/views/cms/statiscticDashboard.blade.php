@@ -77,6 +77,15 @@
                     </div>
                 </div>
             </div>
+            <!-- booking -->
+            <div class="col-md-3">
+                <div class="card text-white bg-danger mb-3 text-center">
+                    <div class="card-body">
+                        <h5>Booking</h5>
+                        <h2>{{ $bookingsCount }}</h2>
+                    </div>
+                </div>
+            </div>
 
         </div>
 

@@ -68,9 +68,12 @@ class HomeController extends Controller
         ]);
     }
 
-    public function booking()
+    public function booking($id)
+
     {
-        return view('front.booking');
+        $hall = Hall::findOrFail($id);
+
+        return view('front.booking', compact('hall'));
     }
     public function storebooking(Request $request)
     {
