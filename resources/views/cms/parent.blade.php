@@ -223,7 +223,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img src="{{ asset('cms/dist/assets/img/user2-160x160.jpg') }}"
                                 class="user-image rounded-circle shadow" alt="User Image" />
-                            <span class="d-none d-md-inline">Alexander Pierce</span>
+                            <span class="d-none d-md-inline">Hall Managment system</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                             <!--begin::User Image-->
@@ -231,8 +231,10 @@
                                 <img src="{{ asset('cms/dist/assets/img/user2-160x160.jpg') }}"
                                     class="rounded-circle shadow" alt="User Image" />
                                 <p>
-                                    Alexander Pierce - Web Developer
-                                    <small>Member since Nov. 2023</small>
+                                    heba hamada - Web Developer
+                                    Samaera daban - Web Developer
+                                    amal alshorbaje - Web Developer
+                                    <small>Member since april. 2026</small>
                                 </p>
                             </li>
                             <!--end::User Image-->
@@ -770,41 +772,38 @@
                         <li class="nav-header">Authentication</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon bi bi-person-circle"></i>
+                                <i class="nav-icon bi bi-person-plus-fill"></i>
                                 <p>
                                     Authentication
                                     <i class="nav-arrow bi bi-chevron-right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
+
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
-                                        <i class="nav-icon bi bi-person-plus-fill"></i>
-                                        <p>Register</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('view.login', ['guard' => request()->segment(2) ?? 'admin']) }}"
-                                        class="nav-link">
                                         <i class="nav-icon bi bi-box-arrow-in-right"></i>
-                                        <p>
-                                            login
-                                            <i class="nav-arrow bi bi-chevron-right"></i>
-                                        </p>
+                                        <p>Login As..<i class="nav-arrow bi bi-chevron-right"></i></p>
                                     </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{ route('view.login', 'admin') }}" class="nav-link">Admin
+                                                Login</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ route('view.login', 'hall_owner') }}" class="nav-link">Hall
+                                                Owner Login</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ route('view.login', 'client') }}" class="nav-link">Client
+                                                Login</a>
+                                        </li>
+                                    </ul>
                                 <li class="nav-item">
                                     <a href="{{ route('view.logout') }}" class="nav-link">
                                         <i class="nav-icon bi bi-box-arrow-right text-danger"></i>
                                         ٍ <p>
                                             logout
-                                            <i class="nav-arrow bi bi-chevron-right"></i>
-                                        </p>
-                                    </a>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="nav-icon bi bi-shield-lock-fill"></i>
-                                        <p>
-                                            change password
                                             <i class="nav-arrow bi bi-chevron-right"></i>
                                         </p>
                                     </a>

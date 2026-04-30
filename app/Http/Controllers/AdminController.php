@@ -62,7 +62,7 @@ class AdminController extends Controller
 
             $admins = new Admin();
             $admins->email = $request->get('email');
-            $admins->password = $request->get('password');
+            $admins->password = Hash::make($request->get('password'));
 
             $isSaved = $admins->save();
             if ($isSaved) {

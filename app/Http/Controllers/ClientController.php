@@ -6,6 +6,7 @@ use App\Models\City;
 use App\Models\Client;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class ClientController extends Controller
@@ -57,7 +58,8 @@ class ClientController extends Controller
 
         $client = new Client();
         $client->email = $request->email;
-        $client->password = $request->password;
+        $client->password = Hash::make($request->get('password'));
+
         $client->save();
 
         $user = new User();

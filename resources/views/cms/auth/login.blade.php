@@ -91,14 +91,8 @@
               </div>
             </div>
             <!--begin::Row-->
-            <div class="row">
-              {{--  <div class="col-8">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                  <label class="form-check-label" for="flexCheckDefault"> Remember Me </label>
-                </div>
-              </div>  --}}
-              <!-- /.col -->
+            <input class="form-check-input" type="checkbox" id="remember" />
+<label class="form-check-label" for="remember"> Remember Me </label>
               <div class="col-4">
                 <div class="d-grid gap-2">
                   <button type="button" onclick="login()" class="btn btn-primary">Sign In</button>
@@ -174,23 +168,22 @@
 
 
         <script src="{{ asset('cms/dist/js/adminlte.min.js') }}"></script>
-<script src="{{ asset('cms/dist/js/adminlte.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="{{ asset('js/crud.js') }}"></script>
     <!--end::OverlayScrollbars Configure-->
     <!--end::Script-->
-    <script>
-    function login() {
+   <script>
+  function login() {
     var guard = '{{request('guard')}}';
     axios.post('/cms/'+guard+'/login', {
       email: document.getElementById('email').value,
       password: document.getElementById('password').value,
-      remember_me: document.getElementById('remember').checked,
+      remember: document.getElementById('remember').checked,
       guard: guard
     })
     .then(function (response) {
-        window.location.href = '/cms/admin'
+        window.location.href = '/cms/admin/statiscticDashboard'
         // showToaster(response.data.message, true);
     })
     .catch(function (error) {

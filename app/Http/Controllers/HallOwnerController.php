@@ -6,6 +6,7 @@ use App\Models\City;
 use App\Models\HallOwner;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class HallOwnerController extends Controller
@@ -63,14 +64,14 @@ class HallOwnerController extends Controller
 
             $hall_owners = new HallOwner();
             $hall_owners->email = $request->get('email');
-            $hall_owners->password = $request->get('password');
+            $hall_owners->password = Hash::make($request->get('password'));
             $hall_owners->company_name = $request->get('company_name');
 
             $isSaved = $hall_owners->save();
             if ($isSaved) {
                 $users = new User();
                 $role = Role::where('id', $request->role_id)
-                    ->where('guard_name', 'admin')
+                    ->where('guard_name', 'hall_owner')
                     ->firstOrFail();
 
                 $hall_owners->assignRole($role->name);
