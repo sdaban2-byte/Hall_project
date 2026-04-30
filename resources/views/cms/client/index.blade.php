@@ -56,8 +56,11 @@
                                             <td>{{ $client->user->last_name ?? '' }}</td>
 
                                             <td>{{ $client->email }}</td>
-                                            {{-- <td>{{ $client->booking_count }}</td> --}}
-                                            {{-- <td>{{ $client->last_booking_date }}</td> --}}
+                                            <td>{{ $client->bookings->count() }}</td>
+
+                                            <td>
+                                                {{ $client->bookings->sortByDesc('booking_date')->first()?->booking_date ?? 'No booking' }}
+                                            </td>
                                             <td class="text-center">
                                                 <div class="btn-group">
 

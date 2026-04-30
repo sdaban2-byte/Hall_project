@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Booking;
 use App\Models\ContactUs;
 use App\Models\Hall;
 use App\Models\Review;
@@ -64,6 +65,45 @@ class HomeController extends Controller
         return response()->json([
             'icon' => 'success',
             'title' => 'Created Successfully',
+        ]);
+    }
+
+    public function booking()
+    {
+        return view('front.booking');
+    }
+    public function storebooking(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'client_id' => 'required',
+            'hall_id' => 'required',
+            'booking_date' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'gesuts_num' => 'required|integer|min:1',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'icon' => 'error',
+                'title' => $validator->getMessageBag()->first(),
+            ], 400);
+        }
+
+        $booking = new Booking();
+        $booking->client_id = $request->client_id;
+        $booking->hall_id = $request->hall_id;
+        $booking->booking_date = $request->booking_date;
+        $booking->start_time = $request->start_time;
+        $booking->end_time = $request->end_time;
+        $booking->gesuts_num = $request->gesuts_num;
+        $booking->notes = $request->notes;
+        $booking->status = 'pending';
+        $booking->save();
+
+        return response()->json([
+            'icon' => 'success',
+            'title' => 'Booking Created Successfully',
         ]);
     }
 }

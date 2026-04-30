@@ -116,23 +116,25 @@ Route::prefix('cms/admin')->group(function () {
     Route::resource('sliders', SliderController::class);
     Route::post('sliders_update/{id}', [SliderController::class, 'update'])->name('sliders_update');
 
-
     Route::resource('contactUs', ContactUsController::class);
     Route::post('contactUs_update/{id}', [ContactUsController::class, 'update'])->name('contactUs_update');
     Route::resource('role.permissions', RolePermissionController::class);
+
     Route::resource('bookings', BookingController::class);
+    Route::post('bookings_update/{id}', [BookingController::class, 'update'])->name('bookings_update');
 
-
-Route::post('bookings/{id}/approve', [BookingController::class, 'approve'])->name('bookings.approve');
-Route::post('bookings/{id}/reject', [BookingController::class, 'reject'])->name('bookings.reject');
+    Route::post('bookings/{id}/approve', [BookingController::class, 'approve']);
+    Route::post('bookings/{id}/reject', [BookingController::class, 'reject']);
 });
 
 Route::prefix('halls/')->group(function () {
     Route::get('index', [HomeController::class, 'home'])->name('home.page');
 
     Route::get('contactus', [HomeController::class, 'contactus'])->name('contactus.page');
-    // Route::post('contactus', [HomeController::class, 'storeContact']);
     Route::post('contactus', [HomeController::class, 'storeContact']);
+
+    Route::get('booking', [HomeController::class, 'booking'])->name('booking.page');
+    Route::post('booking', [HomeController::class, 'storebooking']);
     Route::get('all_halls', [HomeController::class, 'all_halls'])->name('all_halls.page');
     Route::get('hall_detiles/{id}', [HomeController::class, 'hall_detiles'])->name('hall_detiles.page');
 });

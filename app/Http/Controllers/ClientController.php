@@ -16,7 +16,7 @@ class ClientController extends Controller
     public function index()
     {
         //
-        $clients = Client::orderBy('id', 'desc')->paginate(10);
+        $clients = Client::orderBy('id', 'desc')->withCount('bookings')->paginate(10);
         return response()->view('cms.client.index', compact('clients'));
     }
 
@@ -135,7 +135,7 @@ class ClientController extends Controller
             ], 400);
         } else {
 
-            $clients = Client::findOrFail($id);
+            $clients = Client::withCount('bookings')->findOrFail($id);
             $clients->email = $request->get('email');
             $clients->password = $request->get('password');
             // if ($request->password) {

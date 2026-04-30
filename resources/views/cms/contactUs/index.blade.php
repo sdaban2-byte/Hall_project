@@ -123,7 +123,7 @@
                                         .then(res => res.json())
                                         .then(data => {
 
-                                            reference.closest('tr').remove(); // حذف مباشر بدون refresh
+                                            reference.closest('tr').remove();
 
                                             Swal.fire({
                                                 icon: 'success',

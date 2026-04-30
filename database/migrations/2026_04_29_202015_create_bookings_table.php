@@ -20,7 +20,7 @@ return new class extends Migration
             $table->time('start_time');
             $table->time('end_time');
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
-            $table->num('gesuts_num');
+            $table->integer('gesuts_num');
             $table->text('notes')->nullable();
             $table->timestamps();
 
